@@ -51,6 +51,7 @@ O projeto utiliza um servidor web local embutido no Python para servir os arquiv
 
 2.  Clone ou baixe este repositório para o seu computador e extraia os arquivos em uma pasta.
     - para clonar:
+    
     ```bash
     git clone https://github.com/HenriqueCliri/engenharia_solidaria.git
     ```
