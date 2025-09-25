@@ -50,6 +50,10 @@ O projeto utiliza um servidor web local embutido no Python para servir os arquiv
 1.  **Pré-requisito:** Certifique-se de que você tem o **Python 3** instalado em sua máquina.
 
 2.  Clone ou baixe este repositório para o seu computador e extraia os arquivos em uma pasta.
+    - para clonar:
+    ```bash
+    git clone https://github.com/HenriqueCliri/engenharia_solidaria.git
+    ```
 
 3.  Abra o seu **Terminal** ou **Prompt de Comando (cmd)**.
 
