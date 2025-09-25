@@ -39,7 +39,7 @@ As seguintes tecnologias foram empregadas no desenvolvimento do front-end do pro
 - **`HTML5`:** Estruturação e semântica do conteúdo.
 - **`CSS3`:** Estilização, layout responsivo (Flexbox e Grid) e design moderno.
 - **`JavaScript`:** Manipulação do DOM para interatividade dos filtros na página de projetos.
-- **`Python`**Servidor para executar de forma local.
+- **`Python`** Servidor para executar de forma local.
 
 A disciplina tem como foco a **Lógica de Programação**, portanto, o plano para futuras versões é desenvolver
 
@@ -56,7 +56,7 @@ O projeto utiliza um servidor web local embutido no Python para servir os arquiv
 4.  Navegue até a pasta raiz do projeto usando o comando `cd`.
     ```bash
     # Exemplo se a pasta estiver na sua Área de Trabalho
-    cd Desktop/Engenharia-Solidaria
+    cd Desktop/engenharia_solidaria
     ```
 
 5.  Com o terminal dentro da pasta do projeto, inicie o servidor com o seguinte comando:
@@ -72,5 +72,4 @@ O projeto utiliza um servidor web local embutido no Python para servir os arquiv
 7.  O site estará funcionando no seu navegador. Para parar o servidor, digite no terminal: `Ctrl + C`.
 
 desenvolvido com amor pelo grupo ---
-
-> ### *vai dar certo!*
+### *vai dar certo!* 😉
