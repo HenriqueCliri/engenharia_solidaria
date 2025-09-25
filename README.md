@@ -20,14 +20,14 @@ Plataforma web desenvolvida como projeto acadêmico para conectar estudantes de 
 ### 1. Sobre o Projeto
 
 O "Engenharia Solidária" ataca duas frentes principais:
-* **Para os estudantes:** A dificuldade em encontrar oportunidades para aplicar na prática os conhecimentos teóricos adquiridos em sala de aula.
+* **Para os estudantes:** Vivenciar e ter experiências, aplicando os conhecimentos teóricos adquiridos em sala de aula.
 * **Para a comunidade:** A falta de acesso a apoio técnico qualificado para realizar pequenas construções, reformas e reparos essenciais.
 
-Nossa plataforma web serve como uma ponte, criando um ecossistema onde estudantes podem ganhar experiência de campo enquanto contribuem para resolver problemas reais da sociedade.
+Nossa plataforma web serve como uma ponte, criando um ecossistema onde estudantes podem ganhar experiência de campo enquanto contribuem para resolver problemas reais de pessoas que vivem em situações críticas.
 
 ### 2. Contexto Acadêmico
 
-Este projeto é parte integrante da avaliação da disciplina extensionista **LÓGICA DE PROGRAMAÇÃO EM PYTHON**, do semestre letivo 2025.1, no Centro Universitário Fanor Wyden – UniFanor. O desenvolvimento segue as políticas institucionais de integração entre ensino e extensão, com foco em criar soluções de tecnologia com relevância social, viabilidade técnica e baixo custo.
+Este projeto é parte integrante da avaliação da disciplina extensionista **LÓGICA DE PROGRAMAÇÃO EM PYTHON**, do semestre letivo 2025.2, no Centro Universitário Fanor Wyden – UniFanor. O desenvolvimento segue as políticas institucionais de integração entre ensino e extensão, com foco em criar soluções de tecnologia com relevância social, viabilidade técnica e baixo custo.
 
 - **Instituição:** Centro Universitário Fanor Wyden – UniFanor
 - **Professor Orientador:** Prof. Juvenaldo Florentino Canja
