@@ -27,7 +27,7 @@ Nossa plataforma web serve como uma ponte, criando um ecossistema onde estudante
 
 ### 2. Contexto Acadêmico
 
-Este projeto é parte integrante da avaliação da disciplina extensionista **LÓGICA DE PROGRAMAÇÃO EM PYTHON**, do semestre letivo 2025.2, no Centro Universitário Fanor Wyden – UniFanor. O desenvolvimento segue as políticas institucionais de integração entre ensino e extensão, com foco em criar soluções de tecnologia com relevância social, viabilidade técnica e baixo custo.
+Este projeto é parte integrante da avaliação da disciplina extensionista **LÓGICA DE PROGRAMAÇÃO**, do semestre letivo 2025.2, no Centro Universitário Fanor Wyden – UniFanor. O desenvolvimento segue as políticas institucionais de integração entre ensino e extensão, com foco em criar soluções de tecnologia com relevância social, viabilidade técnica e baixo custo.
 
 - **Instituição:** Centro Universitário Fanor Wyden – UniFanor
 - **Professor Orientador:** Prof. Juvenaldo Florentino Canja
@@ -70,6 +70,3 @@ O projeto utiliza um servidor web local embutido no Python para servir os arquiv
     ```
 
 7.  O site estará funcionando no seu navegador. Para parar o servidor, digite no terminal: `Ctrl + C`.
-
-desenvolvido com amor pelo grupo ---
-### *vai dar certo!* 😉
