@@ -10,11 +10,10 @@ Plataforma web desenvolvida como projeto acadêmico para conectar estudantes de 
 
 - [1. Sobre o Projeto](#1-sobre-o-projeto)
 - [2. Contexto Acadêmico](#2-contexto-acadêmico)
-- [3. Funcionalidades](#3-funcionalidades)
-- [4. Tecnologias Utilizadas](#4-tecnologias-utilizadas)
-- [5. Como Executar](#5-como-executar)
-- [6. Estrutura de Arquivos](#6-estrutura-de-arquivos)
-- [7. Autores](#7-autores)
+- [3. Tecnologias Utilizadas](#3-tecnologias-utilizadas)
+- [4. Como Executar](#4-como-executar)
+- [5. Estrutura de Arquivos](#5-estrutura-de-arquivos)
+- [6. Autores](#6-autores)
 
 ---
 
@@ -33,30 +32,45 @@ Este projeto é parte integrante da avaliação da disciplina extensionista **L�
 - **Instituição:** Centro Universitário Fanor Wyden – UniFanor
 - **Professor Orientador:** Prof. Juvenaldo Florentino Canja
 
-### 3. Funcionalidades
-
-O protótipo atual (front-end) conta com três páginas principais:
-
-- **Página Inicial (`index.html`):**
-    - Apresentação do propósito do projeto.
-    - Seção "Como Funciona" para orientar novos usuários.
-    - Destaque para projetos que necessitam de voluntários.
-
-- **Página de Projetos (`projetos.html`):**
-    - Listagem completa de todos os projetos disponíveis em formato de cards.
-    - Funcionalidade de **busca por nome** e **filtro por habilidade técnica**.
-
-- **Página de Detalhes do Projeto (`detalhes-projeto.html`):**
-    - Visão aprofundada de um projeto específico.
-    - Informações sobre descrição, habilidades necessárias, vagas e responsáveis.
-    - Botão de ação principal para o voluntário se inscrever na ação.
-
-### 4. Tecnologias Utilizadas
+### 3. Tecnologias Utilizadas
 
 As seguintes tecnologias foram empregadas no desenvolvimento do front-end do projeto:
 
 - **`HTML5`:** Estruturação e semântica do conteúdo.
 - **`CSS3`:** Estilização, layout responsivo (Flexbox e Grid) e design moderno.
 - **`JavaScript`:** Manipulação do DOM para interatividade dos filtros na página de projetos.
+- **`Python`**Servidor para executar de forma local.
 
-A disciplina tem como foco a **Lógica de Programação em Python**, portanto, o plano para futuras versões é desenvolver
+A disciplina tem como foco a **Lógica de Programação**, portanto, o plano para futuras versões é desenvolver
+
+### 4. Como Executar
+
+O projeto utiliza um servidor web local embutido no Python para servir os arquivos estáticos (HTML, CSS, JS). Para executá-lo, siga os passos abaixo:
+
+1.  **Pré-requisito:** Certifique-se de que você tem o **Python 3** instalado em sua máquina.
+
+2.  Clone ou baixe este repositório para o seu computador e extraia os arquivos em uma pasta.
+
+3.  Abra o seu **Terminal** ou **Prompt de Comando (cmd)**.
+
+4.  Navegue até a pasta raiz do projeto usando o comando `cd`.
+    ```bash
+    # Exemplo se a pasta estiver na sua Área de Trabalho
+    cd Desktop/Engenharia-Solidaria
+    ```
+
+5.  Com o terminal dentro da pasta do projeto, inicie o servidor com o seguinte comando:
+    ```bash
+    python3 -m http.server
+    ```
+
+6.  Abra seu navegador de internet e acesse a seguinte URL:
+    ```
+    http://localhost:8000
+    ```
+
+7.  O site estará funcionando no seu navegador. Para parar o servidor, digite no terminal: `Ctrl + C`.
+
+desenvolvido com amor pelo grupo ---
+
+> ### *vai dar certo!*
