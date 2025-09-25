@@ -34,7 +34,7 @@ Este projeto é parte integrante da avaliação da disciplina extensionista **L�
 
 ### 3. Tecnologias Utilizadas
 
-As seguintes tecnologias foram empregadas no desenvolvimento do front-end do projeto:
+As seguintes tecnologias utilizada:
 
 - **`HTML5`:** Estruturação e semântica do conteúdo.
 - **`CSS3`:** Estilização, layout responsivo (Flexbox e Grid) e design moderno.
