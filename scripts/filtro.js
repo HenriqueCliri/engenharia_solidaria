@@ -1,40 +1,37 @@
-        const filtroPesquisa = document.getElementById('search');
-        const filtroHabilidade = document.getElementById('habilidade');
-        const todosOsProjetos = document.querySelectorAll('.project-card');
 
-        function aplicarFiltros() {
-            const termoPesquisa = filtroPesquisa.value.toLowerCase();
-            const habilidadeSelecionada = filtroHabilidade.value; // Já está em minúsculas pelo HTML
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('search');
+    const skillSelect = document.getElementById('habilidade');
+    const projectCards = document.querySelectorAll('.project-card');
 
-            todosOsProjetos.forEach(function(card) {
-                const tituloCard = card.querySelector('h3').textContent.toLowerCase();
-                const tagsDoCard = card.querySelectorAll('.tag');
+    function filterProjects() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        const selectedSkill = skillSelect.value;
 
-                // Condição 1: Pesquisa
-                const matchPesquisa = tituloCard.includes(termoPesquisa);
+        projectCards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const tags = card.querySelectorAll('.project-card-tags .tag');
 
-                // Condição 2: Habilidade
-                let matchHabilidade = false;
-                if (habilidadeSelecionada === "") { // "Todas"
-                    matchHabilidade = true;
-                } else {
-                    tagsDoCard.forEach(function(tag) {
-                        // A MUDANÇA ESTÁ AQUI:
-                        // Verificamos se 'data-skill' existe e comparamos
-                        if (tag.dataset.skill && tag.dataset.skill === habilidadeSelecionada) {
-                            matchHabilidade = true;
-                        }
-                    });
-                }
+            const searchMatch = title.includes(searchTerm);
 
-                // Exibe o card somente se ambas as condições forem verdadeiras
-                if (matchPesquisa && matchHabilidade) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
+            let skillMatch = false;
+            if (selectedSkill === "") {
+                skillMatch = true;
+            } else {
+                tags.forEach(tag => {
+                    if (tag.dataset.skill === selectedSkill) {
+                        skillMatch = true;
+                    }
+                });
+            }
+            if (searchMatch && skillMatch) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
 
-        filtroPesquisa.addEventListener('keyup', aplicarFiltros);
-        filtroHabilidade.addEventListener('change', aplicarFiltros);
+    searchInput.addEventListener('keyup', filterProjects);
+    skillSelect.addEventListener('change', filterProjects);
+});
