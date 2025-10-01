@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parceiros - Engenharia Solidária</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/parceiros.css">
+</head>
+
+<body
+    data-url-home="{{ url_for('homepage') }}"
+    data-url-projetos="{{ url_for('projetos') }}"
+    data-url-parceiros="{{ url_for('parceiros') }}"
+    data-url-sobre-nos="{{ url_for('sobre_nos') }}"
+    data-url-login="{{ url_for('login_cadastro') }}"
+    data-url-register="{{ url_for('login_cadastro') }}#register"
+>
+
+    <header class="header">
+        <nav class="container navbar">
+            <a href="{{ url_for('homepage') }}" class="logo">Engenharia Solidária</a>
+            <div class="nav-links" id="nav-auth-links">
+                <a href="{{ url_for('projetos') }}">Projetos</a>
+                <a href="{{ url_for('parceiros') }}#partners-list-section">Parceiros</a>
+                <a href="{{ url_for('login_cadastro') }}#login">Login de Estudante</a>
+            </div>
+            <a href="{{ url_for('login_cadastro') }}#register" class="btn btn-primary">Cadastro de Estudante</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-parceiros">
+            <div class="container">
+                <h1>Seja um Parceiro e Transforme sua Comunidade</h1>
+                <p>Conecte sua ONG, associação ou projeto social a estudantes de engenharia engajados e tire suas ideias
+                    do papel.</p>
+            </div>
+        </section>
+
+        <section class="section vantagens-section">
+            <div class="container">
+                <h2 class="section-title">Vantagens de ser um Parceiro</h2>
+                <div class="vantagens-grid">
+                    <div class="vantagem-card">
+                        <h3>Acesso a Talentos</h3>
+                        <p>Receba ajuda de estudantes qualificados e motivados, prontos para aplicar seus conhecimentos
+                            em instalações elétricas, estruturas, planejamento e muito mais.</p>
+                    </div>
+                    <div class="vantagem-card">
+                        <h3>Suporte Técnico Gratuito</h3>
+                        <p>Conte com o apoio técnico de futuros engenheiros para planejar e executar suas reformas,
+                            construções ou melhorias, garantindo mais segurança e qualidade.</p>
+                    </div>
+                    <div class="vantagem-card">
+                        <h3>Amplie seu Impacto</h3>
+                        <p>Com a ajuda de voluntários, seus projetos podem ganhar escala, beneficiando mais pessoas e
+                            fortalecendo o trabalho da sua organização na comunidade.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Como Funciona</h2>
+                <div class="como-funciona-grid">
+                    <div class="passo">
+                        <h3>1. Cadastre-se</h3>
+                        <p>Crie um perfil para sua organização em nossa plataforma de forma rápida e gratuita.</p>
+                    </div>
+                    <div class="passo">
+                        <h3>2. Publique seu Projeto</h3>
+                        <p>Descreva a necessidade da sua comunidade, detalhando as habilidades que você precisa.</p>
+                    </div>
+                    <div class="passo">
+                        <h3>3. Receba Voluntários</h3>
+                        <p>Nossa plataforma conecta seu projeto aos estudantes com o perfil ideal para ajudar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section partners-list-section">
+            <div class="container">
+                <h2 class="section-title">Nossos Parceiros</h2>
+                <div class="partners-grid">
+                    <div class="partner-item">
+                        Prefeitura de Fortaleza
+                    </div>
+                    <div class="partner-item">
+                        Aliens Engenharia
+                    </div>
+                    <div class="partner-item">
+                        ONG Mãos que Ajudam
+                    </div>
+                    <div class="partner-item">
+                        Instituto Viver e Crescer
+                    </div>
+                    <div class="partner-item">
+                        Siará Bom Contruções
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cta-section">
+            <div class="container">
+                <h2 class="section-title">Pronto para se Juntar a Nós?</h2>
+                <p>Junte-se a organizações que já estão fazendo a diferença. O cadastro é simples e rápido!</p>
+                <a href="{{ url_for('login_cadastro_parceiro') }}#register" class="btn btn-primary"
+                    style="font-size: 1.2rem; padding: 15px 30px;">Cadastre sua Organização Agora</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Engenharia Solidária. Um projeto da disciplina de Lógica de Programação.</p>
+        </div>
+        <script src="{{ url_for('static', filename='scripts/nav.js') }}"></script>
+    </footer>
+</body>
+</html>

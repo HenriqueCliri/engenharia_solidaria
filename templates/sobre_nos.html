@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - Engenharia Solidária</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/sobre_nos.css">
+</head>
+
+<body
+    data-url-home="{{ url_for('homepage') }}"
+    data-url-projetos="{{ url_for('projetos') }}"
+    data-url-parceiros="{{ url_for('parceiros') }}"
+    data-url-sobre-nos="{{ url_for('sobre_nos') }}"
+    data-url-login="{{ url_for('login_cadastro') }}"
+    data-url-register="{{ url_for('login_cadastro') }}#register"
+>
+
+    <header class="header">
+        <nav class="container navbar">
+            <a href="{{ url_for('homepage') }}" class="logo">Engenharia Solidária</a>
+            <div class="nav-links" id="nav-auth-links">
+                <a href="{{ url_for('projetos') }}">Projetos</a>
+                <a href="{{ url_for('parceiros') }}">Parceiros</a>
+                <a href="{{ url_for('sobre_nos') }}">Sobre Nós</a>
+                <a href="{{ url_for('login_cadastro') }}#login">Login de Estudante</a>
+            </div>
+            <a href="{{ url_for('login_cadastro') }}#register" class="btn btn-primary">Cadastro de Estudante</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-sobre">
+            <div class="container">
+                <h1>Nossa História: Engenharia com Propósito</h1>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container story-section">
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop"
+                        alt="Equipe colaborando">
+                </div>
+                <div class="story-content">
+                    <h2>Unindo Forças em Busca de Melhores Conduções Humanitárias</h2>
+                    <p>
+                        O projeto Engenharia Solidária é uma iniciativa de um grupo de estudantes de engenharia, da
+                        universidade X.
+                    </p>
+                    <p>
+                        Ao mesmo tempo, como estudantes, sentimos a vontade de aplicar nossos conhecimentos.
+                    </p>
+                    <div class="story-context">
+                        <p>
+                            Esta iniciativa foi desenvolvida no âmbito da disciplina extensionista <strong>LÓGICA DE
+                                PROGRAMAÇÃO</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section team-section">
+            <div class="container">
+                <h2 class="section-title">Conheça a Equipe</h2>
+                <div class="team-grid">
+                    <div class="team-member-card">
+                        <div class="photo-placeholder"></div>
+                        <h3>[Seu Nome Aqui]</h3>
+                        <p class="role">Adminstrador de Equipe</p>
+                        <p>Responsável pela criação das interfaces e pela experiência do usuário na plataforma.</p>
+                    </div>
+
+                    <div class="team-member-card">
+                        <div class="photo-placeholder"></div>
+                        <h3>[Nome do Colega]</h3>
+                        <p class="role">Gerente de Projeto / Documentação</p>
+                        <p>Responsável pela organização das tarefas, documentação e contato com os parceiros.</p>
+                    </div>
+
+                    <div class="team-member-card">
+                        <div class="photo-placeholder"></div>
+                        <h3>[Nome do Colega]</h3>
+                        <p class="role">Coordenador</p>
+                        <p>Responsável pela futura implementação da lógica do servidor, banco de dados e APIs.</p>
+                    </div>
+
+                    <div class="team-member-card">
+                        <div class="photo-placeholder"></div>
+                        <h3>[Nome do Colega]</h3>
+                        <p class="role">Desenvolvedor</p>
+                        <p>Responsável pela futura implementação da lógica do servidor, banco de dados e APIs.</p>
+                    </div>
+
+                    <div class="team-member-card">
+                        <div class="photo-placeholder"></div>
+                        <h3>[Nome do Colega]</h3>
+                        <p class="role">Rercursos Humanos</p>
+                        <p>Responsável pela futura implementação da lógica do servidor, banco de dados e APIs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cta-section">
+            <div class="container">
+                <h2 class="section-title">Faça Parte da Mudança</h2>
+                <p>Junte-se a nós nesta missão. Seja como voluntário ou como parceiro, sua ajuda é fundamental.</p>
+                <a href="{{ url_for('projetos') }}" class="btn btn-primary"
+                    style="margin-right: 10px; font-size: 1.1rem; padding: 15px 30px;">Ver Projetos</a>
+                <a href="{{ url_for('parceiros') }}" class="btn btn-primary"
+                    style="background-color: #333; font-size: 1.1rem; padding: 15px 30px;">Seja um Parceiro</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Engenharia Solidária. Um projeto da disciplina de Lógica de Programação.</p>
+        </div>
+        <script src="{{ url_for('static', filename='scripts/nav.js') }}"></script>
+    </footer>
+</body>
+
+</html>

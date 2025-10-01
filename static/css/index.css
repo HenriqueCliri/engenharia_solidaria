@@ -1,0 +1,215 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: #333333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+h1,
+h2 {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* --- HEADER (CABEÇALHO) --- */
+.header {
+  background-color: #ffffff;
+  padding: 15px 0;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  color: #0a4f8a;
+  text-decoration: none;
+}
+
+.nav-links a {
+  color: #333333;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 500;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #ff7a00;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #e66a00;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+  background: linear-gradient(rgba(10, 79, 138, 0.7), rgba(10, 79, 138, 0.7)),
+    url("https://images.unsplash.com/photo-1581092916375-2a29357e6242?q=80&w=2070&auto=format&fit=crop")
+      no-repeat center center/cover;
+  color: #ffffff;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero .btn-secondary {
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  margin-left: 10px;
+}
+
+.hero .btn-secondary:hover {
+  background-color: #ffffff;
+  color: #0a4f8a;
+}
+
+/* --- SEÇÕES DE CONTEÚDO --- */
+.section {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #0a4f8a;
+}
+
+/* --- SEÇÃO "COMO FUNCIONA" --- */
+.how-it-works-grid {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.step {
+  max-width: 300px;
+}
+
+.step h3 {
+  font-size: 1.5rem;
+  margin: 15px 0;
+}
+
+/* --- SEÇÃO "PROJETOS EM DESTAQUE" --- */
+.projects-section {
+  background-color: #f4f4f4;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  text-align: left;
+}
+
+.project-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-card-content {
+  padding: 20px;
+}
+
+.project-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.project-card-location {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.project-card-tags {
+  margin-bottom: 20px;
+}
+
+.project-card-tags .tag {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  margin-right: 5px;
+}
+
+/* --- FOOTER (RODAPÉ) --- */
+.footer {
+  background-color: #0a4f8a;
+  color: #ffffff;
+  text-align: center;
+  padding: 30px 0;
+}
+
+/* --- RESPONSIVIDADE PARA CELULARES --- */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .nav-links {
+    margin-top: 15px;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .how-it-works-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -8,204 +8,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
-    <style>
-        /* --- ESTILOS GLOBAIS E RESET (Idênticos ao da Homepage) --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            color: #333333;
-            line-height: 1.6;
-            background-color: #F4F4F4; /* Fundo geral da página */
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background-color: #FF7A00;
-            color: #FFFFFF;
-        }
-        
-        .btn-primary:hover {
-            background-color: #e66a00;
-        }
-
-        /* --- HEADER (CABEÇALHO - Idêntico ao da Homepage) --- */
-        .header {
-            background-color: #FFFFFF;
-            padding: 15px 0;
-            border-bottom: 1px solid #e0e0e0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            color: #0A4F8A;
-            text-decoration: none;
-        }
-
-        .nav-links a {
-            color: #333333;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 500;
-        }
-        
-        /* --- NOVO: CABEÇALHO DA PÁGINA DE PROJETOS --- */
-        .page-header {
-            background-color: #0A4F8A;
-            color: #FFFFFF;
-            padding: 40px 0;
-            text-align: center;
-        }
-        
-        .page-header h1 {
-            font-size: 2.8rem;
-        }
-
-        /* --- NOVO: BARRA DE FILTROS --- */
-        .filters-bar {
-            background-color: #FFFFFF;
-            padding: 20px;
-            margin: 30px auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            flex-wrap: wrap; /* Permite que os filtros quebrem a linha em telas menores */
-        }
-        
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1; /* Faz os grupos ocuparem o espaço disponível */
-        }
-        
-        .filter-group label {
-            font-weight: 500;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-        }
-        
-        .filter-group input,
-        .filter-group select {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        /* --- LISTA DE PROJETOS (Ajustes da Homepage) --- */
-        .projects-list {
-            padding: 30px 0 80px 0;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            text-align: left;
-        }
-
-        .project-card {
-            background-color: #FFFFFF;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .project-card-content {
-            padding: 20px;
-        }
-
-        .project-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-        
-        .project-card-location {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .project-card-tags {
-            margin-bottom: 20px;
-        }
-
-        .project-card-tags .tag {
-            background-color: #e0e0e0;
-            color: #333;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            margin-right: 5px;
-            display: inline-block;
-            margin-bottom: 5px;
-        }
-
-        /* --- FOOTER (RODAPÉ - Idêntico ao da Homepage) --- */
-        .footer {
-            background-color: #0A4F8A;
-            color: #FFFFFF;
-            text-align: center;
-            padding: 30px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="../static/css/projetos.css">
 </head>
-<body>
+<body
+    data-url-home="{{ url_for('homepage') }}"
+    data-url-projetos="{{ url_for('projetos') }}"
+    data-url-parceiros="{{ url_for('parceiros') }}"
+    data-url-sobre-nos="{{ url_for('sobre_nos') }}"
+    data-url-login="{{ url_for('login_cadastro') }}"
+    data-url-register="{{ url_for('login_cadastro') }}#register"
+>
 
     <header class="header">
         <nav class="container navbar">
-            <a href="index.html" class="logo">Engenharia Solidária</a> <div class="nav-links">
-                <a href="projetos.html">Projetos</a> <a href="#">Sobre Nós</a>
-                <a href="parceiros.html">Parceiros</a>
-                <a href="login_cadastro.html#login">Login</a>
+            <a href="{{ url_for('homepage') }}" class="logo">Engenharia Solidária</a> 
+            <div class="nav-links" id="nav-auth-links">
+                <a href="{{ url_for('projetos') }}">Projetos</a> <a href="{{ url_for('sobre_nos') }}">Sobre Nós</a>
+                <a href="{{ url_for('parceiros') }}">Parceiros</a>
+                <a href="{{ url_for('login_cadastro') }}#login">Login de Estudante</a>
             </div>
-            <a href="login_cadastro.html#register" class="btn btn-primary">Cadastre-se</a>
+            <a href="{{ url_for('login_cadastro') }}#register" class="btn btn-primary">Cadastro de Estudante</a>
         </nav>
     </header>
 
@@ -229,6 +51,7 @@
                         <option value="hidraulica">Hidráulica</option>
                         <option value="pintura">Pintura</option>
                         <option value="mecânica">Mecânica</option>
+                        <option value="design">Design</option>
                         <option value="estruturas">Estruturas</option>
                         <option value="construção">Construção</option>
                         <option value="planejamento">Planejamento</option>
@@ -253,7 +76,7 @@
             <div class="container">
                 <div class="projects-grid">
                     <div class="project-card">
-                        <img src="./img/cre_tea.jpg" alt="Projeto 1">
+                        <img src="{{ url_for('static', filename='img/cre_tea.jpg')}}" alt="Projeto 1">
                         <div class="project-card-content">
                             <h3>Centro de Referência Estadual voltado para pessoas com Transtorno do Espectro Autista</h3>
                             <p class="project-card-location">Fortaleza</p>
@@ -262,62 +85,62 @@
                                 <span class="tag" data-skill="construção">#Construção</span>
                                 <span class="tag"  data-skill="pintura">#Pintura</span>
                             </div>
-                            <a href="./detalhes_projeto.html" class="btn btn-primary">Saiba Mais</a>
+                            <a href="{{ url_for('detalhes_projeto') }}" class="btn btn-primary">Saiba Mais</a>
                         </div>
                     </div>
                     <div class="project-card">
-                        <img src="./img/biblioteca.jpeg" alt="Projeto 2">
+                        <img src="{{ url_for('static', filename='img/biblioteca.jpeg')}}" alt="Projeto 2">
                         <div class="project-card-content">
                             <h3>Criação de Espaços de Estudos</h3>
                             <p class="project-card-location">Fortaleza, CE</p>
                             <div class="project-card-tags">
                                 <span class="tag" data-skill="construção">#Contrução</span> <span class="tag"  data-skill="hidraulica">#Hidráulica</span>
                             </div>
-                            <a href="./detalhes_projeto.html" class="btn btn-primary">Saiba Mais</a>
+                            <a href="{{ url_for('detalhes_projeto') }}" class="btn btn-primary">Saiba Mais</a>
                         </div>
                     </div>
                     <div class="project-card">
-                        <img src="./img/biblioteca.jpeg" alt="Projeto 3">
+                        <img src="{{ url_for('static', filename='img/biblioteca.jpeg')}}" alt="Projeto 3">
                         <div class="project-card-content">
                             <h3>Biblioteca Pública de Fortaleza</h3>
                             <p class="project-card-location">Fortaleza, CE</p>
                             <div class="project-card-tags">
                                 <span class="tag" data-skill="construção">#Construção</span> <span class="tag"  data-skill="estruturas">#Estruturas</span>
                             </div>
-                            <a href="./detalhes_projeto.html" class="btn btn-primary">Saiba Mais</a>
+                            <a href="{{ url_for('detalhes_projeto') }}" class="btn btn-primary">Saiba Mais</a>
                         </div>
                     </div>
                     <div class="project-card">
-                        <img src="./img/quadra_esportiva.jpeg" alt="Projeto 4">
+                        <img src="{{ url_for('static', filename='img/quadra_esportiva.jpeg')}}" alt="Projeto 4">
                         <div class="project-card-content">
                             <h3>Reforma da Quadra Esportiva</h3>
                             <p class="project-card-location">Messejana, CE</p>
                             <div class="project-card-tags">
                                 <span class="tag"  data-skill="planejamento">#Planejamento</span> <span class="tag"  data-skill="design">#Design</span>
                             </div>
-                            <a href="./detalhes_projeto.html" class="btn btn-primary">Saiba Mais</a>
+                            <a href="{{ url_for('detalhes_projeto') }}" class="btn btn-primary">Saiba Mais</a>
                         </div>
                     </div>
                      <div class="project-card">
-                        <img src="./img/creche.jpg" alt="Projeto 5">
+                        <img src="{{ url_for('static', filename='img/creche.jpg')}}" alt="Projeto 5">
                         <div class="project-card-content">
                             <h3>Criação de Espaço para Descanço de Crianças</h3>
                             <p class="project-card-location">Bairro Jangurussu, Fortaleza</p>
                             <div class="project-card-tags">
                                 <span class="tag"  data-skill="mecânica">#Mecânica</span> <span class="tag"  data-skill="design">#Design</span>
                             </div>
-                            <a href="./detalhes_projeto.html" class="btn btn-primary">Saiba Mais</a>
+                            <a href="{{ url_for('detalhes_projeto')}}" class="btn btn-primary">Saiba Mais</a>
                         </div>
                     </div>
                      <div class="project-card">
-                        <img src="./img/escola.jpg" alt="Projeto 6">
+                        <img src="{{ url_for('static', filename='img/escola.jpg')}}" alt="Projeto 6">
                         <div class="project-card-content">
-                            <h3>Instalação de Sistema detector de Metal</h3>
+                            <h3>Instalação de detector de Metal</h3>
                             <p class="project-card-location">Fortaleza</p>
                             <div class="project-card-tags">
                                 <span class="tag"  data-skill="planejamento">#Planejamento</span> <span class="tag" data-skill="mecânica">#Mecânica</span>
                             </div>
-                            <a href="./detalhes_projeto.html" class="btn btn-primary">Saiba Mais</a>
+                            <a href="{{ url_for('detalhes_projeto') }}" class="btn btn-primary">Saiba Mais</a>
                         </div>
                     </div>
                 </div>
@@ -331,6 +154,7 @@
             <p>&copy; 2025 Engenharia Solidária. Um projeto da disciplina de Lógica de Programação.</p>
         </div>
     </footer>
-        <script src="./scripts/filtro.js"></script>
+    <script src="{{ url_for('static', filename='scripts/filtro.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/nav.js') }}"></script>
 </body>
 </html>

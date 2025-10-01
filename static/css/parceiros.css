@@ -1,0 +1,197 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+h1,
+h2 {
+  font-family: "Montserrat", sans-serif;
+  color: #0a4f8a;
+}
+
+.section {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+/* --- HEADER E FOOTER --- */
+.header {
+  background-color: #ffffff;
+  padding: 15px 0;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  color: #0a4f8a;
+  text-decoration: none;
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 500;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #ff7a00;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #e66a00;
+}
+
+.footer {
+  background-color: #0a4f8a;
+  color: #ffffff;
+  text-align: center;
+  padding: 30px 0;
+}
+
+/* --- HERO SECTION PARA PARCEIROS --- */
+.hero-parceiros {
+  background: linear-gradient(rgba(10, 79, 138, 0.8), rgba(10, 79, 138, 0.8)),
+    url("https://images.unsplash.com/photo-1531545514256-b1400bc00f31?q=80&w=1974&auto=format&fit=crop")
+      no-repeat center center/cover;
+  color: #ffffff;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.hero-parceiros h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.hero-parceiros p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- SEÇÃO DE VANTAGENS --- */
+.vantagens-section {
+  background-color: #f4f4f4;
+}
+
+.vantagens-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  text-align: left;
+}
+
+.vantagem-card {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.vantagem-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #0a4f8a;
+}
+
+/* --- SEÇÃO "COMO FUNCIONA" --- */
+.como-funciona-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.passo {
+  max-width: 300px;
+}
+
+.passo h3 {
+  font-size: 1.5rem;
+  margin: 15px 0;
+}
+
+/* --- SEÇÃO LISTA DE PARCEIROS --- */
+.partners-list-section {
+  background-color: #ffffff;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  align-items: center;
+}
+
+.partner-item {
+  background-color: #ffffff;
+  padding: 30px 20px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  font-weight: 500;
+  color: #555;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.partner-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cta-section {
+  background-color: #0a4f8a;
+  color: #ffffff;
+}
+
+.cta-section .section-title {
+  color: #ffffff;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: -20px auto 30px auto;
+}

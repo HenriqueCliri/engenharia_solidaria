@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Projeto - Engenharia Solidária</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/detalhes_projeto.css">
+</head>
+<body
+    data-url-home="{{ url_for('homepage') }}"
+    data-url-projetos="{{ url_for('projetos') }}"
+    data-url-parceiros="{{ url_for('parceiros') }}"
+    data-url-sobre-nos="{{ url_for('sobre_nos') }}"
+    data-url-login="{{ url_for('login_cadastro') }}"
+    data-url-register="{{ url_for('login_cadastro') }}#register"
+>
+
+    <header class="header">
+        <nav class="container navbar">
+            <a href="{{ url_for('homepage') }}" class="logo">Engenharia Solidária</a>
+            <div class="nav-links" id="nav-auth-links">
+                <a href="{{ url_for('projetos') }}">Projetos</a>
+                <a href="{{ url_for('sobre_nos') }}">Sobre Nós</a>
+                <a href="{{url_for('parceiros') }}">Parceiros</a>
+                <a href="{{ url_for('login_cadastro') }}">Login de Estudante</a>
+            </div>
+            <a href="{{ url_for('login_cadastro') }}#register" class="btn btn-primary">Cadastro de Estudante</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="project-detail-section">
+            <div class="container project-detail-container">
+                <div class="project-gallery">
+                    <img src="{{ url_for('static', filename='img/creche.jpg') }}" alt="Imagem principal do projeto">
+                </div>
+
+                <div class="project-info">
+                    <h1>Reforma da Creche Comunitária Sonhar</h1>
+                    <p class="project-location">Bairro Bom Jardim, Fortaleza</p>
+                    
+                    <div class="project-tags">
+                        <span class="tag">#Elétrica</span>
+                        <span class="tag">#Pintura</span>
+                    </div>
+
+                    <div class="cta-box">
+                        <p class="vacancies">Vagas disponíveis: <strong>3 de 5</strong></p>
+                        <a href="{{ url_for('login_cadastro') }}#register" class="btn btn-primary" id="btn-inscrever">QUERO PARTICIPAR!</a>
+                    </div>
+                    
+                    <div class="project-description">
+                        <h2>Sobre o Projeto</h2>
+                        <p>
+                            A Creche Comunitária Sonhar atende mais de 50 crianças no bairro Bom Jardim e precisa urgentemente de uma reforma em suas instalações elétricas para garantir a segurança dos pequenos. Além disso, as salas de aula necessitam de uma nova pintura para se tornarem um ambiente mais acolhedor e estimulante.
+                        </p>
+                        <p>
+                            Este projeto visa mobilizar estudantes para realizar uma revisão completa da fiação, troca de tomadas e disjuntores, além da pintura de três salas principais.
+                        </p>
+
+                        <h2>Habilidades Necessárias</h2>
+                        <ul>
+                            <li>Conhecimento básico em instalações elétricas prediais.</li>
+                            <li>Experiência com pintura de interiores e preparação de superfícies.</li>
+                            <li>Proatividade e compromisso com o trabalho em equipe.</li>
+                            <li>Disponibilidade aos sábados durante o próximo mês.</li>
+                        </ul>
+                        
+                        <h2>Responsável pela Ação</h2>
+                        <p>
+                            <strong>ONG Mãos que Ajudam</strong> - Contato: Maria Silva
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Engenharia Solidária. Um projeto da disciplina de Lógica de Programação.</p>
+        </div>
+    <script src="{{ url_for('static', filename='scripts/projetos_detalhes.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/nav.js') }}"></script>
+    </footer>
+</body>
+</html>

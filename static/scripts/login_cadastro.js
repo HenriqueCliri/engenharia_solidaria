@@ -2,6 +2,8 @@ const showLoginBtn = document.getElementById('showLoginBtn');
 const showRegisterBtn = document.getElementById('showRegisterBtn');
 const loginForm = document.getElementById('loginForm');
 const registerForm = document.getElementById('registerForm');
+const loginBtn = document.getElementById('loginBtn');
+
 
 function showLoginForm() {
     loginForm.classList.remove('hidden');
@@ -28,4 +30,14 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         showLoginForm();
     }
+});
+
+loginBtn.addEventListener('click', function(event) {
+    event.preventDefault(); 
+    
+    localStorage.setItem('isLoggedIn', 'true');
+    
+    alert('Login realizado com sucesso! (Simulação)');
+    
+    window.location.href = 'index.html';
 });

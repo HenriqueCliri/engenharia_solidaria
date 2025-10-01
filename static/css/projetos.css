@@ -1,0 +1,185 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: #333333;
+  line-height: 1.6;
+  background-color: #f4f4f4; /* Fundo geral da página */
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Montserrat", sans-serif;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #ff7a00;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #e66a00;
+}
+
+/* --- HEADER (CABEÇALHO - Idêntico ao da Homepage) --- */
+.header {
+  background-color: #ffffff;
+  padding: 15px 0;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  color: #0a4f8a;
+  text-decoration: none;
+}
+
+.nav-links a {
+  color: #333333;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 500;
+}
+
+/* --- NOVO: CABEÇALHO DA PÁGINA DE PROJETOS --- */
+.page-header {
+  background-color: #0a4f8a;
+  color: #ffffff;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 2.8rem;
+}
+
+/* --- NOVO: BARRA DE FILTROS --- */
+.filters-bar {
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 30px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap; /* Permite que os filtros quebrem a linha em telas menores */
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Faz os grupos ocuparem o espaço disponível */
+}
+
+.filter-group label {
+  font-weight: 500;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+.filter-group input,
+.filter-group select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* --- LISTA DE PROJETOS (Ajustes da Homepage) --- */
+.projects-list {
+  padding: 30px 0 80px 0;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  text-align: left;
+}
+
+.project-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-card-content {
+  padding: 20px;
+}
+
+.project-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.project-card-location {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.project-card-tags {
+  margin-bottom: 20px;
+}
+
+.project-card-tags .tag {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  margin-right: 5px;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+/* --- FOOTER (RODAPÉ - Idêntico ao da Homepage) --- */
+.footer {
+  background-color: #0a4f8a;
+  color: #ffffff;
+  text-align: center;
+  padding: 30px 0;
+}
