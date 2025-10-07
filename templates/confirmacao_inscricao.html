@@ -1,32 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Confirmar Inscrição - Engenharia Solidária</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/confirmacao_inscricao.css">
-</head>
-<body
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../static/css/confirmacao_inscricao.css" />
+  </head>
+  <body
     data-url-home="{{ url_for('homepage') }}"
     data-url-projetos="{{ url_for('projetos') }}"
     data-url-parceiros="{{ url_for('parceiros') }}"
     data-url-sobre-nos="{{ url_for('sobre_nos') }}"
     data-url-login="{{ url_for('login_cadastro') }}"
     data-url-register="{{ url_for('login_cadastro') }}#register"
->
+    data-logged-in="{{ logged_in }}"
+    data-url-logout="{{ url_for('logout') }}"
+  >
     <div class="container">
-        <h1>Confirmar Inscrição no Projeto</h1>
-        <p class="project-title">Reforma da Creche Comunitária Sonhar</p>
-        <p class="project-location">Bairro Bom Jardim, Fortaleza</p>
-        <p>Você está a um passo de se inscrever como voluntário. Ao confirmar, você demonstra seu interesse em
-            participar e seus dados de perfil (nome e email) serão compartilhados com a organização responsável.</p>
-        <a href="#" class="btn btn-confirm">Confirmar Minha Inscrição</a>
-        <br>
-        <a href="{{ url_for('projetos') }}" class="btn-cancel">Voltar e cancelar</a>
+      <h1>Confirmar Inscrição no Projeto</h1>
+      <p class="project-title">{{ project.title }}</p>
+      <p class="project-location">{{ project.description }}</p>
+      <p>
+        Você está a um passo de se inscrever como voluntário. Ao confirmar, você
+        demonstra seu interesse em participar e seus dados de perfil (nome e
+        email) serão compartilhados com a organização responsável.
+      </p>
+      <a href="#" class="btn btn-confirm">Confirmar Minha Inscrição</a>
+      
+      <form
+        action="{{ url_for('inscrever', project_id=project.id) }}"
+        method="POST"
+      >
+        <button type="submit" class="btn btn-confirm">
+          Confirmar Minha Inscrição
+        </button>
+      </form>
+
+      <br />
+      <a href="{{ url_for('detalhes_projeto'), project_id=project.id }}" class="btn-cancel"
+        >Voltar e cancelar</a
+      >
     </div>
     <script src="{{ url_for('static', filename='scripts/nav.js') }}"></script>
-</body>
-
+  </body>
 </html>

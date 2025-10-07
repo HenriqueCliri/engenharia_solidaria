@@ -17,6 +17,8 @@
     data-url-sobre-nos="{{ url_for('sobre_nos') }}"
     data-url-login="{{ url_for('login_cadastro') }}"
     data-url-register="{{ url_for('login_cadastro') }}#register"
+    data-logged-in="{{ logged_in }}"
+    data-url-logout="{{ url_for('logout') }}"
 >
 
     <header class="header">
@@ -75,6 +77,21 @@
         <section class="projects-list">
             <div class="container">
                 <div class="projects-grid">
+                    {% for project in projects %}
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1517019128315-135b5a2dba4a?q=80&w=1974&auto=format&fit=crop" alt="Imagem do Projeto">
+                        <div class="project-card-content">
+                            <h3>{{ project.title }}</h3>
+                            <p class="project-card-location">{{ project.location }}</p>
+                            <div class="project-card-tags">
+                                <span class="tag">#Comunitário</span>
+                            </div>
+                            <a href="{{ url_for('detalhes_projeto', project_id=project.id) }}" class="btn btn-primary">Saiba Mais</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
                     <div class="project-card">
                         <img src="{{ url_for('static', filename='img/cre_tea.jpg')}}" alt="Projeto 1">
                         <div class="project-card-content">

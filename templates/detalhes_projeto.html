@@ -17,6 +17,8 @@
     data-url-sobre-nos="{{ url_for('sobre_nos') }}"
     data-url-login="{{ url_for('login_cadastro') }}"
     data-url-register="{{ url_for('login_cadastro') }}#register"
+    data-logged-in="{{ logged_in }}"
+    data-url-logout="{{ url_for('logout') }}"
 >
 
     <header class="header">
@@ -40,8 +42,8 @@
                 </div>
 
                 <div class="project-info">
-                    <h1>Reforma da Creche Comunitária Sonhar</h1>
-                    <p class="project-location">Bairro Bom Jardim, Fortaleza</p>
+                    <h1>{{ project.title }}</h1>
+                    <p class="project-location">{{ project.location }}</p>
                     
                     <div class="project-tags">
                         <span class="tag">#Elétrica</span>
@@ -50,17 +52,12 @@
 
                     <div class="cta-box">
                         <p class="vacancies">Vagas disponíveis: <strong>3 de 5</strong></p>
-                        <a href="{{ url_for('login_cadastro') }}#register" class="btn btn-primary" id="btn-inscrever">QUERO PARTICIPAR!</a>
+                        <a href="{{ url_for('confirmacao_inscricao'), project_id=projeto.id }}#register" class="btn btn-primary" id="btn-inscrever">QUERO PARTICIPAR!</a>
                     </div>
                     
                     <div class="project-description">
                         <h2>Sobre o Projeto</h2>
-                        <p>
-                            A Creche Comunitária Sonhar atende mais de 50 crianças no bairro Bom Jardim e precisa urgentemente de uma reforma em suas instalações elétricas para garantir a segurança dos pequenos. Além disso, as salas de aula necessitam de uma nova pintura para se tornarem um ambiente mais acolhedor e estimulante.
-                        </p>
-                        <p>
-                            Este projeto visa mobilizar estudantes para realizar uma revisão completa da fiação, troca de tomadas e disjuntores, além da pintura de três salas principais.
-                        </p>
+                        <p>{{ project.description }}</p>
 
                         <h2>Habilidades Necessárias</h2>
                         <ul>
