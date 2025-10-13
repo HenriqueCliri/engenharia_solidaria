@@ -27,9 +27,9 @@
             <div class="nav-links" id="nav-auth-links">
                 <a href="{{ url_for('projetos') }}">Projetos</a> <a href="{{ url_for('sobre_nos') }}">Sobre Nós</a>
                 <a href="{{ url_for('parceiros') }}">Parceiros</a>
-                <a href="{{ url_for('login_cadastro') }}#login">Login de Estudante</a>
+                <a href="{{ url_for('login_cadastro') }}#login" id="btn-login">Login de Estudante</a>
             </div>
-            <a href="{{ url_for('login_cadastro') }}#register" class="btn btn-primary">Cadastro de Estudante</a>
+            <a href="{{ url_for('login_cadastro') }}#register" class="btn btn-primary" id="btn-register">Cadastro de Estudante</a>
         </nav>
     </header>
 
@@ -79,7 +79,7 @@
                 <div class="projects-grid">
                     {% for project in projects %}
                     <div class="project-card">
-                        <img src="https://images.unsplash.com/photo-1517019128315-135b5a2dba4a?q=80&w=1974&auto=format&fit=crop" alt="Imagem do Projeto">
+                        <img src="../static/img/horta_em_escola.jpg" alt="Imagem do Projeto">
                         <div class="project-card-content">
                             <h3>{{ project.title }}</h3>
                             <p class="project-card-location">{{ project.location }}</p>
@@ -91,75 +91,6 @@
                     </div>
                     {% endfor %}
                 </div>
-
-                    <div class="project-card">
-                        <img src="{{ url_for('static', filename='img/cre_tea.jpg')}}" alt="Projeto 1">
-                        <div class="project-card-content">
-                            <h3>Centro de Referência Estadual voltado para pessoas com Transtorno do Espectro Autista</h3>
-                            <p class="project-card-location">Fortaleza</p>
-                            <div class="project-card-tags">
-                                <span class="tag"  data-skill="eletrica">#Elétrica</span> 
-                                <span class="tag" data-skill="construção">#Construção</span>
-                                <span class="tag"  data-skill="pintura">#Pintura</span>
-                            </div>
-                            <a href="{{ url_for('detalhes_projeto') }}" class="btn btn-primary">Saiba Mais</a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="{{ url_for('static', filename='img/biblioteca.jpeg')}}" alt="Projeto 2">
-                        <div class="project-card-content">
-                            <h3>Criação de Espaços de Estudos</h3>
-                            <p class="project-card-location">Fortaleza, CE</p>
-                            <div class="project-card-tags">
-                                <span class="tag" data-skill="construção">#Contrução</span> <span class="tag"  data-skill="hidraulica">#Hidráulica</span>
-                            </div>
-                            <a href="{{ url_for('detalhes_projeto') }}" class="btn btn-primary">Saiba Mais</a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="{{ url_for('static', filename='img/biblioteca.jpeg')}}" alt="Projeto 3">
-                        <div class="project-card-content">
-                            <h3>Biblioteca Pública de Fortaleza</h3>
-                            <p class="project-card-location">Fortaleza, CE</p>
-                            <div class="project-card-tags">
-                                <span class="tag" data-skill="construção">#Construção</span> <span class="tag"  data-skill="estruturas">#Estruturas</span>
-                            </div>
-                            <a href="{{ url_for('detalhes_projeto') }}" class="btn btn-primary">Saiba Mais</a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="{{ url_for('static', filename='img/quadra_esportiva.jpeg')}}" alt="Projeto 4">
-                        <div class="project-card-content">
-                            <h3>Reforma da Quadra Esportiva</h3>
-                            <p class="project-card-location">Messejana, CE</p>
-                            <div class="project-card-tags">
-                                <span class="tag"  data-skill="planejamento">#Planejamento</span> <span class="tag"  data-skill="design">#Design</span>
-                            </div>
-                            <a href="{{ url_for('detalhes_projeto') }}" class="btn btn-primary">Saiba Mais</a>
-                        </div>
-                    </div>
-                     <div class="project-card">
-                        <img src="{{ url_for('static', filename='img/creche.jpg')}}" alt="Projeto 5">
-                        <div class="project-card-content">
-                            <h3>Criação de Espaço para Descanço de Crianças</h3>
-                            <p class="project-card-location">Bairro Jangurussu, Fortaleza</p>
-                            <div class="project-card-tags">
-                                <span class="tag"  data-skill="mecânica">#Mecânica</span> <span class="tag"  data-skill="design">#Design</span>
-                            </div>
-                            <a href="{{ url_for('detalhes_projeto')}}" class="btn btn-primary">Saiba Mais</a>
-                        </div>
-                    </div>
-                     <div class="project-card">
-                        <img src="{{ url_for('static', filename='img/escola.jpg')}}" alt="Projeto 6">
-                        <div class="project-card-content">
-                            <h3>Instalação de detector de Metal</h3>
-                            <p class="project-card-location">Fortaleza</p>
-                            <div class="project-card-tags">
-                                <span class="tag"  data-skill="planejamento">#Planejamento</span> <span class="tag" data-skill="mecânica">#Mecânica</span>
-                            </div>
-                            <a href="{{ url_for('detalhes_projeto') }}" class="btn btn-primary">Saiba Mais</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>

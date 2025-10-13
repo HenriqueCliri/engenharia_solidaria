@@ -31,9 +31,9 @@
             <div class="nav-links" id="nav-auth-links">
                 <a href="{{ url_for('projetos') }}">Projetos</a>
                 <a href="{{ url_for('parceiros') }}#partners-list-section">Parceiros</a>
-                <a href="{{ url_for('login_cadastro') }}#login">Login de Estudante</a>
+                <a href="{{ url_for('login_cadastro') }}#login" id="btn-login">Login de Estudante</a>
             </div>
-            <a href="{{ url_for('login_cadastro') }}#register" class="btn btn-primary">Cadastro de Estudante</a>
+            <a href="{{ url_for('login_cadastro') }}#register" class="btn btn-primary" id="btn-register">Cadastro de Estudante</a>
         </nav>
     </header>
 
@@ -127,7 +127,7 @@
         <div class="container">
             <p>&copy; 2025 Engenharia Solidária. Um projeto da disciplina de Lógica de Programação.</p>
         </div>
-        <script src="{{ url_for('static', filename='scripts/nav.js') }}"></script>
     </footer>
+    <script src="{{ url_for('static', filename='scripts/nav.js') }}"></script>
 </body>
 </html>

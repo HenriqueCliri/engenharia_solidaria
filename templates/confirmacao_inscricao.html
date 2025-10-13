@@ -8,9 +8,10 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../static/css/confirmacao_inscricao.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
   </head>
   <body
+    class="confirmation-body"
     data-url-home="{{ url_for('homepage') }}"
     data-url-projetos="{{ url_for('projetos') }}"
     data-url-parceiros="{{ url_for('parceiros') }}"
@@ -20,16 +21,15 @@
     data-logged-in="{{ logged_in }}"
     data-url-logout="{{ url_for('logout') }}"
   >
-    <div class="container">
+    <div class="confirmation-container">
       <h1>Confirmar Inscrição no Projeto</h1>
       <p class="project-title">{{ project.title }}</p>
-      <p class="project-location">{{ project.description }}</p>
+      <p class="project-location">{{ project.location }}</p>
       <p>
         Você está a um passo de se inscrever como voluntário. Ao confirmar, você
         demonstra seu interesse em participar e seus dados de perfil (nome e
         email) serão compartilhados com a organização responsável.
       </p>
-      <a href="#" class="btn btn-confirm">Confirmar Minha Inscrição</a>
       
       <form
         action="{{ url_for('inscrever', project_id=project.id) }}"
@@ -41,10 +41,9 @@
       </form>
 
       <br />
-      <a href="{{ url_for('detalhes_projeto'), project_id=project.id }}" class="btn-cancel"
+      <a href="{{ url_for('detalhes_projeto', project_id=project.id) }}" class="btn-cancel"
         >Voltar e cancelar</a
       >
     </div>
-    <script src="{{ url_for('static', filename='scripts/nav.js') }}"></script>
   </body>
 </html>

@@ -39,7 +39,12 @@ As seguintes tecnologias utilizada:
 - **`HTML5`:** Estruturação e semântica do conteúdo.
 - **`CSS3`:** Estilização, layout responsivo (Flexbox e Grid) e design moderno.
 - **`JavaScript`:** Manipulação do DOM para interatividade dos filtros na página de projetos.
-- **`Python`** Servidor para executar de forma local.
+- **`Python3`** Servidor para executar de forma local.
+- **`Flask`** (Mricroframework web)
+- **`Flask-SQLAlchemy`** (ORM para integração com o banco de dados)
+- **`Werkzeug`** (Para criptografia de senhas)
+- **`SQLite`** (Banco de dados)
+- **`Venv`** (Ambiente virtual python)
 
 A disciplina tem como foco a **Lógica de Programação**, portanto, o plano para futuras versões é desenvolver
 
@@ -47,29 +52,60 @@ A disciplina tem como foco a **Lógica de Programação**, portanto, o plano par
 
 O projeto utiliza um servidor web local embutido no Python para servir os arquivos estáticos (HTML, CSS, JS). Para executá-lo, siga os passos abaixo:
 
-1.  **Pré-requisito:** Certifique-se de que você tem o **Python 3** instalado em sua máquina.
+#### a. **Pré-requisito:** 
+- **Python 3**
+- **Git**
 
-2.  Clone ou baixe este repositório para o seu computador e extraia os arquivos em uma pasta.
+#### b. **Passos da instalação**
+
+1. **Clone ou baixe este repositório para o seu computador e extraia os arquivos em uma pasta.**
+
     ```bash
     git clone https://github.com/HenriqueCliri/engenharia_solidaria.git
+    cd engenharia_solidaria
     ```
 
-3.  Abra o seu **Terminal** ou **Prompt de Comando (cmd)**.
+2. **Crie e ative o ambiente virtual (venv).**
 
-4.  Navegue até a pasta raiz do projeto usando o comando `cd`.
     ```bash
-    # Exemplo se a pasta estiver na sua Área de Trabalho
-    cd Desktop/engenharia_solidaria
+    # Criar o ambiente
+    python -m venv venv
+
+    # Ativar no Windows
+    venv\Scripts\activate
+
+    # Ativar no macOS/Linux
+    source venv/bin/activate
     ```
 
-5.  Com o terminal dentro da pasta do projeto, inicie o servidor com o seguinte comando:
+3.  **Instale as dependências:**
+
     ```bash
-    python3 -m http.server
+    pip install -r Flask Flask-SQLAlchemy
     ```
 
-6.  Abra seu navegador de internet e acesse a seguinte URL:
-    ```
-    http://localhost:8000
+4.  **Crie o banco de dados:**
+    Execute o `flask shell` e os comandos para criar as tabelas e adicionar projetos de exemplo.
+    
+    ```bash
+    # Inicia o shell do Flask
+    flask shell
+
+    # Dentro do shell (>>>), execute:
+    from app import db
+    db.create_all()
+
+    from app import Project
+    projeto1 = Project(title='Reforma da Creche Comunitária Sonhar', description='A creche precisa de uma reforma em suas instalações elétricas...', location='Bairro Bom Jardim, Fortaleza')
+    projeto2 = Project(title='Construção de Horta na Escola Local', description='Vamos construir uma horta comunitária no pátio da escola...', location='Bairro Jangurussu, Fortaleza')
+    db.session.add_all([projeto1, projeto2])
+    db.session.commit()
+    exit()
     ```
 
-7.  O site estará funcionando no seu navegador. Para parar o servidor, digite no terminal: `Ctrl + C`.
+5.  Com o ambiente virtual ativo execute o seguinte comando para subir o servidor:
+
+    ```bash
+    flask run
+    ```
+ Abra seu navegador de internet e acesse a seguinte URL: **http://localhost:5000**
