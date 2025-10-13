@@ -69,7 +69,7 @@ O projeto utiliza um servidor web local embutido no Python para servir os arquiv
 
     ```bash
     # Criar o ambiente
-    python -m venv venv
+    python3 -m venv venv
 
     # Ativar no Windows
     venv\Scripts\activate
@@ -81,7 +81,7 @@ O projeto utiliza um servidor web local embutido no Python para servir os arquiv
 3.  **Instale as dependências:**
 
     ```bash
-    pip install -r Flask Flask-SQLAlchemy
+    pip install Flask Flask-SQLAlchemy
     ```
 
 4.  **Crie o banco de dados:**
