@@ -12,8 +12,7 @@ Plataforma web desenvolvida como projeto acadêmico para conectar estudantes de 
 - [2. Contexto Acadêmico](#2-contexto-acadêmico)
 - [3. Tecnologias Utilizadas](#3-tecnologias-utilizadas)
 - [4. Como Executar](#4-como-executar)
-- [5. Estrutura de Arquivos](#5-estrutura-de-arquivos)
-- [6. Autores](#6-autores)
+- [5. Autores](#6-autores)
 
 ---
 
@@ -21,9 +20,9 @@ Plataforma web desenvolvida como projeto acadêmico para conectar estudantes de 
 
 O "Engenharia Solidária" ataca duas frentes principais:
 * **Para os estudantes:** Vivenciar e ter experiências, aplicando os conhecimentos teóricos adquiridos em sala de aula.
-* **Para a comunidade:** A falta de acesso a apoio técnico qualificado para realizar pequenas construções, reformas e reparos essenciais.
+* **Para a comunidade:** Facilita o acesso a apoio técnico qualificado para realizar pequenas construções, reformas e reparos essenciais.
 
-Nossa plataforma web serve como uma ponte, criando um ecossistema onde estudantes podem ganhar experiência de campo enquanto contribuem para resolver problemas reais de pessoas que vivem em situações críticas.
+Nossa plataforma web serve como uma ponte, criando um ecossistema onde estudantes podem ganhar experiência de campo enquanto contribuem para resolver problemas reais no âmbito social.
 
 ### 2. Contexto Acadêmico
 
@@ -46,14 +45,14 @@ As seguintes tecnologias utilizada:
 - **`SQLite`** (Banco de dados)
 - **`Venv`** (Ambiente virtual python)
 
-A disciplina tem como foco a **Lógica de Programação**, portanto, o plano para futuras versões é desenvolver
+A disciplina tem como foco a **Lógica de Programação**, portanto, o plano para futuras versões é desenvolver ainda mais a plataforma.
 
 ### 4. Como Executar
 
 O projeto utiliza um servidor web local embutido no Python para servir os arquivos estáticos (HTML, CSS, JS). Para executá-lo, siga os passos abaixo:
 
 #### a. **Pré-requisito:** 
-- **Python 3**
+- **Python3.x.x**
 - **Git**
 
 #### b. **Passos da instalação**
@@ -84,28 +83,17 @@ O projeto utiliza um servidor web local embutido no Python para servir os arquiv
     pip install Flask Flask-SQLAlchemy
     ```
 
-4.  **Crie o banco de dados:**
-    Execute o `flask shell` e os comandos para criar as tabelas e adicionar projetos de exemplo.
-    
-    ```bash
-    # Inicia o shell do Flask
-    flask shell
-
-    # Dentro do shell (>>>), execute:
-    from app import db
-    db.create_all()
-
-    from app import Project
-    projeto1 = Project(title='Reforma da Creche Comunitária Sonhar', description='A creche precisa de uma reforma em suas instalações elétricas...', location='Bairro Bom Jardim, Fortaleza')
-    projeto2 = Project(title='Construção de Horta na Escola Local', description='Vamos construir uma horta comunitária no pátio da escola...', location='Bairro Jangurussu, Fortaleza')
-    db.session.add_all([projeto1, projeto2])
-    db.session.commit()
-    exit()
-    ```
-
-5.  Com o ambiente virtual ativo execute o seguinte comando para subir o servidor:
+4.  Com o ambiente virtual ativo execute o seguinte comando para subir o servidor:
 
     ```bash
-    flask run
+    python3 run.py
     ```
  Abra seu navegador de internet e acesse a seguinte URL: **http://localhost:5000**
+
+### 5. Autores
+
+- Davi
+- Francisco Neto
+- Ricardo
+- Samya
+- Henrique

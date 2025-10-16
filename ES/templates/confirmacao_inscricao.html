@@ -12,14 +12,15 @@
   </head>
   <body
     class="confirmation-body"
-    data-url-home="{{ url_for('homepage') }}"
-    data-url-projetos="{{ url_for('projetos') }}"
-    data-url-parceiros="{{ url_for('parceiros') }}"
-    data-url-sobre-nos="{{ url_for('sobre_nos') }}"
-    data-url-login="{{ url_for('login_cadastro') }}"
-    data-url-register="{{ url_for('login_cadastro') }}#register"
+    data-url-home="{{ url_for('main.homepage') }}"
+    data-url-projetos="{{ url_for('main.projetos') }}"
+    data-url-parceiros="{{ url_for('main.parceiros') }}"
+    data-url-sobre-nos="{{ url_for('main.sobre_nos') }}"
+    data-url-login="{{ url_for('main.login_cadastro') }}"
+    data-url-register="{{ url_for('main.login_cadastro') }}#register"
     data-logged-in="{{ logged_in }}"
-    data-url-logout="{{ url_for('logout') }}"
+    data-url-logout="{{ url_for('main.logout') }}"
+    data-url-perfil="{{ url_for('main.perfil') }}"
   >
     <div class="confirmation-container">
       <h1>Confirmar Inscrição no Projeto</h1>
@@ -32,7 +33,7 @@
       </p>
       
       <form
-        action="{{ url_for('inscrever', project_id=project.id) }}"
+        action="{{ url_for('main.inscrever', project_id=project.id) }}"
         method="POST"
       >
         <button type="submit" class="btn btn-confirm">
@@ -41,7 +42,7 @@
       </form>
 
       <br />
-      <a href="{{ url_for('detalhes_projeto', project_id=project.id) }}" class="btn-cancel"
+      <a href="{{ url_for('main.detalhes_projeto', project_id=project.id) }}" class="btn-cancel"
         >Voltar e cancelar</a
       >
     </div>

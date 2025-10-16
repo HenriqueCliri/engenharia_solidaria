@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Engenharia Solidária</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body
+    data-url-home="{{ url_for('main.homepage') }}"
+    data-url-projetos="{{ url_for('main.projetos') }}"
+    data-url-parceiros="{{ url_for('main.parceiros') }}"
+    data-url-sobre-nos="{{ url_for('main.sobre_nos') }}"
+    data-url-login="{{ url_for('main.login_cadastro') }}"
+    data-url-register="{{ url_for('main.login_cadastro') }}#register"
+    data-url-logout="{{ url_for('main.logout') }}"
+    data-logged-in="{{ logged_in }}"
+    data-url-perfil="{{ url_for('main.perfil') }}"
+>
+
+    <header class="header">
+        <nav class="container navbar">
+            <a href="{{ url_for('main.homepage') }}" class="logo">Engenharia Solidária</a>
+            <div class="nav-links" id="nav-auth-links">
+                </div>
+            <a href="{{ url_for('main.login_cadastro') }}#register" class="btn btn-primary" id="btn-register">Cadastre-se</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container" style="text-align: left;">
+                <h1 style="text-align: center; margin-bottom: 40px;">Bem-vindo(a) ao seu Perfil, {{ user.nome }}!</h1>
+                
+                <h2 class="section-title" style="font-size: 2rem; text-align: center;">Meus Projetos Inscritos</h2>
+
+                {% if user.projects %}
+                    <div class="projects-grid">
+                        {% for project in user.projects %}
+                        <div class="project-card">
+                            <img src="{{ url_for('static', filename='img/biblioteca.jpeg') }}" alt="Imagem do Projeto">
+                            <div class="project-card-content">
+                                <h3>{{ project.title }}</h3>
+                                <p class="project-card-location">{{ project.location }}</p>
+                                <a href="{{ url_for('main.detalhes_projeto', project_id=project.id) }}" class="btn btn-primary">Ver Detalhes</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p style="text-align: center; margin-top: 30px;">
+                        Você ainda não se inscreveu em nenhum projeto. 
+                        <a href="{{ url_for('main.projetos') }}">Que tal encontrar um agora?</a>
+                    </p>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Engenharia Solidária. Um projeto da disciplina de Lógica de Programação.</p>
+            <p class="signature">vai dar certo!</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='scripts/nav.js') }}"></script>
+</body>
+</html>

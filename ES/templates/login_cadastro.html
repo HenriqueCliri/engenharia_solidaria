@@ -11,15 +11,15 @@
     <link rel="stylesheet" href="../static/css/login_cadastro.css">
 </head>
 <body
-    data-url-home="{{ url_for('homepage') }}"
-    data-url-projetos="{{ url_for('projetos') }}"
-    data-url-parceiros="{{ url_for('parceiros') }}"
-    data-url-sobre-nos="{{ url_for('sobre_nos') }}"
-    data-url-login="{{ url_for('login_cadastro') }}"
-    data-url-register="{{ url_for('login_cadastro') }}#register"
+    data-url-home="{{ url_for('main.homepage') }}"
+    data-url-projetos="{{ url_for('main.projetos') }}"
+    data-url-parceiros="{{ url_for('main.parceiros') }}"
+    data-url-sobre-nos="{{ url_for('main.sobre_nos') }}"
+    data-url-login="{{ url_for('main.login_cadastro') }}"
+    data-url-register="{{ url_for('main.login_cadastro') }}#register"
     data-logged-in="{{ logged_in }}"
-    data-url-logout="{{ url_for('logout') }}"
-
+    data-url-logout="{{ url_for('main.logout') }}"
+    data-url-perfil="{{ url_for('main.perfil') }}"
 >
 
     <div class="form-container">
@@ -35,7 +35,7 @@
             <button id="showRegisterBtn" class="switcher-btn">Cadastro</button>
         </div>
 
-        <form id="loginForm" method="POST" action="{{ url_for('login') }}">
+        <form id="loginForm" method="POST" action="{{ url_for('main.login') }}">
             <h2>Entrar na Plataforma</h2>
             <div class="form-group">
                 <label for="loginEmail">Email</label>
@@ -51,7 +51,7 @@
             <button type="submit" class="btn-submit" id="logginBtn">Entrar</button>
         </form>
 
-        <form id="registerForm" method="POST"  class="hidden" action="{{ url_for('login_cadastro') }}">
+        <form id="registerForm" method="POST"  class="hidden" action="{{ url_for('main.login_cadastro') }}">
             <h2>Crie sua Conta</h2>
             <div class="form-group">
                 <label for="registerName">Nome Completo</label>
@@ -72,6 +72,6 @@
             <button type="submit" class="btn-submit">Criar Conta</button>
         </form>
     </div>
-    <script src="{{ url_for('static', filename='scripts/login_cadastro.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/student_auth.js') }}"></script>
 </body>
 </html>

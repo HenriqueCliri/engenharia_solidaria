@@ -11,27 +11,28 @@
     <link rel="stylesheet" href="../static/css/detalhes_projeto.css">
 </head>
 <body
-    data-url-home="{{ url_for('homepage') }}"
-    data-url-projetos="{{ url_for('projetos') }}"
-    data-url-parceiros="{{ url_for('parceiros') }}"
-    data-url-sobre-nos="{{ url_for('sobre_nos') }}"
-    data-url-login="{{ url_for('login_cadastro') }}"
-    data-url-register="{{ url_for('login_cadastro') }}#register"
+    data-url-home="{{ url_for('main.homepage') }}"
+    data-url-projetos="{{ url_for('main.projetos') }}"
+    data-url-parceiros="{{ url_for('main.parceiros') }}"
+    data-url-sobre-nos="{{ url_for('main.sobre_nos') }}"
+    data-url-login="{{ url_for('main.login_cadastro') }}"
+    data-url-register="{{ url_for('main.login_cadastro') }}#register"
     data-logged-in="{{ logged_in }}"
-    data-url-logout="{{ url_for('logout') }}"
-    data-url-confirmacao="{{ url_for('confirmacao_inscricao', project_id=project.id) }}"
+    data-url-logout="{{ url_for('main.logout') }}"
+    data-url-confirmacao="{{ url_for('main.confirmacao_inscricao', project_id=project.id) }}"
+    data-url-perfil="{{ url_for('main.perfil') }}"
 >
 
     <header class="header">
         <nav class="container navbar">
-            <a href="{{ url_for('homepage') }}" class="logo">Engenharia Solidária</a>
+            <a href="{{ url_for('main.homepage') }}" class="logo">Engenharia Solidária</a>
             <div class="nav-links" id="nav-auth-links">
-                <a href="{{ url_for('projetos') }}">Projetos</a>
-                <a href="{{ url_for('sobre_nos') }}">Sobre Nós</a>
-                <a href="{{url_for('parceiros') }}">Parceiros</a>
-                <a href="{{ url_for('login_cadastro') }}" id="btn-login">Login de Estudante</a>
+                <a href="{{ url_for('main.projetos') }}">Projetos</a>
+                <a href="{{ url_for('main.sobre_nos') }}">Sobre Nós</a>
+                <a href="{{url_for('main.parceiros') }}">Parceiros</a>
+                <a href="{{ url_for('main.login_cadastro') }}" id="btn-login">Login de Estudante</a>
             </div>
-            <a href="{{ url_for('login_cadastro') }}#register" class="btn btn-primary" id="btn-register">Cadastro de Estudante</a>
+            <a href="{{ url_for('main.login_cadastro') }}#register" class="btn btn-primary" id="btn-register">Cadastro de Estudante</a>
         </nav>
     </header>
 
@@ -53,7 +54,7 @@
 
                     <div class="cta-box">
                         <p class="vacancies">Vagas disponíveis: <strong>3 de 5</strong></p>
-                        <a href="{{ url_for('confirmacao_inscricao', project_id=project.id) }}#register" class="btn btn-primary" id="btn-inscrever">QUERO PARTICIPAR!</a>
+                        <a href="{{ url_for('main.confirmacao_inscricao', project_id=project.id) }}#register" class="btn btn-primary" id="btn-inscrever">QUERO PARTICIPAR!</a>
                     </div>
                     
                     <div class="project-description">

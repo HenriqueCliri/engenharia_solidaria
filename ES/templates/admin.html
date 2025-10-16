@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Administrador - Engenharia Solidária</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+<body data-logged-in="True">
+
+    <header class="header">
+        <nav class="container navbar">
+            <a href="{{ url_for('main.admin_page') }}" class="logo">Painel do Administrador</a>
+            <div>
+                <a href="{{ url_for('main.homepage') }}" class="btn" style="background-color: #ccc; margin-right: 10px;">Ver Site</a>
+                <a href="{{ url_for('main.logout') }}" class="btn btn-primary">Sair</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container" style="padding-top: 40px; padding-bottom: 40px;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}{% for category, message in messages %}
+                <div class="alert-{{ category }}">{{ message }}</div>
+            {% endfor %}{% endif %}
+        {% endwith %}
+
+        <section style="margin-bottom: 50px;">
+            <h2 class="section-title">Criar Novo Projeto</h2>
+            <form action="{{ url_for('main.admin_page') }}" method="POST" style="max-width: 700px; margin: auto; text-align: left;">
+                <div class="form-group"><label>Título</label><input type="text" name="title" required></div>
+                <div class="form-group"><label>Localização</label><input type="text" name="location" required></div>
+                <div class="form-group"><label>Data da Obra</label><input type="date" name="work_date"></div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select name="status" style="width: 100%; padding: 10px; font-size: 1rem; border: 1px solid #ccc; border-radius: 5px;">
+                        <option>Não Inicializada</option>
+                        <option>Em Andamento</option>
+                        <option>Concluída</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Habilidades Necessárias</label>
+                    <div style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                        {% for skill in skills %}
+                        <label style="display: block;"><input type="checkbox" name="skills" value="{{ skill.id }}"> {{ skill.name }}</label>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Descrição Completa</label>
+                    <textarea name="description" rows="5" required style="width: 100%; padding: 10px; font-size: 1rem; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Publicar Projeto</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section style="margin-top: 50px;">
+            <h2 class="section-title">Projetos Publicados</h2>
+            {% for project in projects %}
+            <div style="background: #f4f4f4; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <span><strong>{{ project.title }}</strong> - Status: {{ project.status }}</span>
+                    <div>
+                        <a href="{{ url_for('main.view_volunteers', project_id=project.id) }}" class="btn" style="background: #aed6f1;">Inscritos ({{ project.voluntarios|length }})</a>
+                        <form action="{{ url_for('main.delete_project', project_id=project.id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Tem certeza que deseja deletar este projeto?');">
+                            <button type="submit" class="btn" style="background: #f5b7b1;">Deletar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>

@@ -14,15 +14,15 @@
 </head>
 
 <body
-    data-url-home="{{ url_for('homepage') }}"
-    data-url-projetos="{{ url_for('projetos') }}"
-    data-url-parceiros="{{ url_for('parceiros') }}"
-    data-url-sobre-nos="{{ url_for('sobre_nos') }}"
-    data-url-login="{{ url_for('login_cadastro') }}"
-    data-url-register="{{ url_for('login_cadastro') }}#register"
+    data-url-home="{{ url_for('main.homepage') }}"
+    data-url-projetos="{{ url_for('main.projetos') }}"
+    data-url-parceiros="{{ url_for('main.parceiros') }}"
+    data-url-sobre-nos="{{ url_for('main.sobre_nos') }}"
+    data-url-login="{{ url_for('main.login_cadastro') }}"
+    data-url-register="{{ url_for('main.login_cadastro') }}#register"
     data-logged-in="{{ logged_in }}"
-    data-url-logout="{{ url_for('logout') }}"
-
+    data-url-logout="{{ url_for('main.logout') }}"
+    data-url-perfil="{{ url_for('main.perfil') }}"
 >
 
     <div class="form-container">
@@ -47,33 +47,32 @@
             <button type="submit" class="btn-submit">Entrar</button>
         </form>
 
-        <form id="registerForm" class="hidden">
+        <form id="registerForm" class="hidden" method="POST" action="{{ url_for('main.login_cadastro_parceiro') }}">
             <h2>Cadastre sua Organização</h2>
             <div class="form-group">
                 <label for="orgName">Nome da Organização</label>
-                <input type="text" id="orgName" placeholder="Ex: ONG Mãos que Ajudam" required>
+                <input type="text" id="orgName" name="org_name" placeholder="Ex: ONG Mãos que Ajudam" required>
             </div>
             <div class="form-group">
                 <label for="orgCNPJ">CNPJ (Opcional)</label>
-                <input type="text" id="orgCNPJ" placeholder="00.000.000/0000-00">
+                <input type="text" id="orgCNPJ" name="cnpj" placeholder="00.000.000/0000-00">
             </div>
             <div class="form-group">
                 <label for="contactName">Nome do Responsável</label>
-                <input type="text" id="contactName" placeholder="Seu nome completo" required>
+                <input type="text" id="contactName" name="responsible_name" placeholder="Seu nome completo" required>
             </div>
             <div class="form-group">
                 <label for="registerEmail">Email de Contato</label>
-                <input type="email" id="registerEmail" placeholder="email@suaorganizacao.com" required>
+                <input type="email" id="registerEmail" name="email" placeholder="email@suaorganizacao.com" required>
             </div>
             <div class="form-group">
                 <label for="registerPassword">Crie uma Senha</label>
-                <input type="password" id="registerPassword" placeholder="Mínimo 6 caracteres" required>
+                <input type="password" id="registerPassword" name="senha" placeholder="Mínimo 6 caracteres" required>
             </div>
             <button type="submit" class="btn-submit">Cadastrar Organização</button>
         </form>
     </div>
 
-    <script src="{{ url_for('static', filename='scripts/login_cadastro.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/partner_auth.js') }}"></script>
 </body>
-
 </html>

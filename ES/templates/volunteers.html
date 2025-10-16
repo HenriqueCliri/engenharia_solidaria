@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscritos - {{ project.title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+<body data-logged-in="True">
+    <header class="header">
+        <nav class="container navbar">
+            <a href="{{ url_for('main.admin_page') }}" class="logo">Painel do Administrador</a>
+            <div><a href="{{ url_for('main.logout') }}" class="btn btn-primary">Sair</a></div>
+        </nav>
+    </header>
+    <main class="container" style="padding-top: 40px; padding-bottom: 40px;">
+        <h1 class="section-title">Inscritos no Projeto: {{ project.title }}</h1>
+
+        {% if project.voluntarios %}
+            <ul style="list-style: none; padding: 0; max-width: 600px; margin: auto;">
+                {% for voluntario in project.voluntarios %}
+                <li style="background: #f4f4f4; padding: 15px; border-radius: 5px; margin-bottom: 10px;">
+                    <strong>Nome:</strong> {{ voluntario.nome }} <br>
+                    <strong>Email:</strong> {{ voluntario.email }}
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p style="text-align: center;">Ainda não há voluntários inscritos neste projeto.</p>
+        {% endif %}
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="{{ url_for('main.admin_page') }}" class="btn" style="background: #ccc;">Voltar ao Painel</a>
+        </div>
+    </main>
+</body>
+</html>
