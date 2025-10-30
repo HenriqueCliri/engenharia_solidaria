@@ -8,7 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/detalhes_projeto.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/detalhes_projeto.css') }}">
 </head>
 <body
     data-url-home="{{ url_for('main.homepage') }}"
@@ -22,69 +27,86 @@
     data-url-confirmacao="{{ url_for('main.confirmacao_inscricao', project_id=project.id) }}"
     data-url-perfil="{{ url_for('main.perfil') }}"
 >
-
-    <header class="header">
-        <nav class="container navbar">
-            <a href="{{ url_for('main.homepage') }}" class="logo">Engenharia Solidária</a>
-            <div class="nav-links" id="nav-auth-links">
-                <a href="{{ url_for('main.projetos') }}">Projetos</a>
-                <a href="{{ url_for('main.sobre_nos') }}">Sobre Nós</a>
-                <a href="{{url_for('main.parceiros') }}">Parceiros</a>
-                <a href="{{ url_for('main.login_cadastro') }}" id="btn-login">Login de Estudante</a>
-            </div>
-            <a href="{{ url_for('main.login_cadastro') }}#register" class="btn btn-primary" id="btn-register">Cadastro de Estudante</a>
-        </nav>
+    <header id="top-header">
+        <button id="sidebar-toggle" aria-label="Abrir menu lateral">
+            &#9776; 
+        </button>
+        <a href="{{ url_for('main.homepage') }}" class="header-logo">Engenharia Solidária</a>
     </header>
 
-    <main>
-        <section class="project-detail-section">
-            <div class="container project-detail-container">
-                <div class="project-gallery">
-                    <img src="{{ url_for('static', filename='img/creche.jpg') }}" alt="Imagem principal do projeto">
-                </div>
+    
+    <aside id="sidebar">
+        <button id="sidebar-close" aria-label="Fechar menu lateral">&times;</button> 
+        <nav id="sidebar-nav-links" class="sidebar-nav">
+            </nav>
 
-                <div class="project-info">
-                    <h1>{{ project.title }}</h1>
-                    <p class="project-location">{{ project.location }}</p>
-                    
-                    <div class="project-tags">
-                        <span class="tag">#Elétrica</span>
-                        <span class="tag">#Pintura</span>
+        <a href="{{ url_for('main.login_cadastro') }}#register" class="btn btn-primary sidebar-register-btn" id="btn-register">Cadastro de Estudante</a>
+    </aside>
+
+    <div id="main-content">
+        <main>
+            <section class="project-detail-section">
+                <div class="container project-detail-container">
+                    <div class="project-gallery">
+                        <img src="{{ url_for('static', filename='img/creche.jpg') }}" alt="Imagem principal do projeto">
                     </div>
 
-                    <div class="cta-box">
-                        <p class="vacancies">Vagas disponíveis: <strong>3 de 5</strong></p>
-                        <a href="{{ url_for('main.confirmacao_inscricao', project_id=project.id) }}#register" class="btn btn-primary" id="btn-inscrever">QUERO PARTICIPAR!</a>
-                    </div>
-                    
-                    <div class="project-description">
-                        <h2>Sobre o Projeto</h2>
-                        <p>{{ project.description }}</p>
-
-                        <h2>Habilidades Necessárias</h2>
-                        <ul>
-                            <li>Conhecimento básico em instalações elétricas prediais.</li>
-                            <li>Experiência com pintura de interiores e preparação de superfícies.</li>
-                            <li>Proatividade e compromisso com o trabalho em equipe.</li>
-                            <li>Disponibilidade aos sábados durante o próximo mês.</li>
-                        </ul>
+                    <div class="project-info">
+                        <h1>{{ project.title }}</h1>
+                        <p class="project-location">{{ project.location }}</p>
                         
-                        <h2>Responsável pela Ação</h2>
-                        <p>
-                            <strong>ONG Mãos que Ajudam</strong> - Contato: Maria Silva
-                        </p>
+                        <div class="project-tags">
+                            {% for skill in project.required_skills %}
+                                <span class="tag">{{ skill.name }}</span>
+                            {% else %}
+                                <span class="tag" style="background-color: #eee; color: #777;">Não especificado</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="cta-box">
+                            <p class="vacancies">Vagas disponíveis: <strong>3 de 5</strong></p>
+                            <a href="{{ url_for('main.confirmacao_inscricao', project_id=project.id) }}#register" class="btn btn-primary" id="btn-inscrever">QUERO PARTICIPAR!</a>
+                        </div>
+                        
+                        <div class="project-description">
+                            <h2>Sobre o Projeto</h2>
+                            <p>{{ project.description }}</p>
+
+                            <h2>Habilidades Necessárias</h2>
+                                {% if project.required_skills %}
+                                    <ul>
+                                        {% for skill in project.required_skills %}
+                                            <li>{{ skill.name }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <p>Nenhuma habilidade específica listada.</p>
+                                {% endif %}
+                            <h2>Responsável pela Ação</h2>
+                                {% if project.responsible_org %}
+                                    <p>
+                                        <strong>{{ project.responsible_org }}</strong>
+                                        {% if project.responsible_contact %}
+                                            - Contato: {{ project.responsible_contact }}
+                                        {% endif %}
+                                    </p>
+                                {% else %}
+                                    <p>Organização não informada.</p>
+                                {% endif %}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
+        </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Engenharia Solidária. Um projeto da disciplina de Lógica de Programação.</p>
-        </div>
-    </footer>
+        <footer class="footer">
+            <div class="footer-container">
+                <p>&copy; 2025 Engenharia Solidária. Um projeto da disciplina de Lógica de Programação.</p>
+            </div>
+        </footer>
+    </div>
     <script src="{{ url_for('static', filename='scripts/projeto_detalhes.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/nav.js') }}"></script>
+    <script src="{{url_for('static', filename='scripts/sidebar.js') }}"></script>
 </body>
 </html>

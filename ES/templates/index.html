@@ -8,7 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/index.css">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
 </head>
 <body
     data-url-home="{{ url_for('main.homepage') }}"
@@ -21,22 +27,22 @@
     data-url-logout="{{ url_for('main.logout') }}"
     data-url-perfil="{{ url_for('main.perfil') }}"
 >
-
-    <header class="header">
-        <nav class="container navbar">
-            <a href="#" class="logo">Engenharia Solidária</a>
-            <div class="nav-links" id="nav-auth-links">
-                <a href="{{ url_for('main.projetos') }}">Projetos</a>
-                <a href="{{ url_for('main.sobre_nos') }}">Sobre Nós</a>
-                <a href="{{ url_for('main.parceiros') }}">Parceiros</a>
-                <a href="{{ url_for('main.login_cadastro') }}#login" id="btn-login">Login de Estudante</a>
-            </div>
-                <a href="{{ url_for('main.login_cadastro') }}#register" 
-                class="btn btn-primary" id="btn-register">
-            Cadastro de Estudante</a>
-        </nav>
+    <header id="top-header">
+        <button id="sidebar-toggle" aria-label="Abrir menu lateral">
+            &#9776; 
+        </button>
+        <a href="{{ url_for('main.homepage') }}" class="header-logo">Engenharia Solidária</a>
     </header>
 
+    <aside id="sidebar">
+        <button id="sidebar-close" aria-label="Fechar menu lateral">&times;</button> 
+        <nav id="sidebar-nav-links" class="sidebar-nav">
+            </nav>
+
+        <a href="{{ url_for('main.login_cadastro') }}#register" class="btn btn-primary sidebar-register-btn" id="btn-register">Cadastro de Estudante</a>
+    </aside>
+
+<div id="main-content">
     <main>
         <section class="hero">
             <div class="container">
@@ -73,7 +79,7 @@
                 <div class="projects-grid">
                     {% for project in projects %}
                     <div class="project-card">
-                        <img src="../static/img/creche.jpg" alt="Imagem do Projeto">
+                        <img src="{{ url_for('static', filename='img/creche.jpg')}}" alt="Imagem do Projeto">
                         <div class="project-card-content">
                             <h3>{{ project.title }}</h3>
                             <p class="project-card-location">{{ project.location }}</p>
@@ -90,12 +96,15 @@
     </main>
 
     <footer class="footer">
-
-        <div class="container">
+        <div class="footer-container">
             <p>&copy; 2025 Engenharia Solidária. Um projeto da disciplina de Lógica de Programação.</p>
         </div>
     </footer>
+</div>
+
     <script src="{{ url_for('static', filename='scripts/student_auth.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/nav.js')}}"></script>
+    <script src="{{ url_for('static', filename='scripts/sidebar.js')}}"></script>
+
 </body>
 </html>

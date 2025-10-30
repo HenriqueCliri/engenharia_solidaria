@@ -1,77 +1,99 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login e Cadastro - Engenharia Solidária</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/login_cadastro.css">
-</head>
-<body
-    data-url-home="{{ url_for('main.homepage') }}"
-    data-url-projetos="{{ url_for('main.projetos') }}"
-    data-url-parceiros="{{ url_for('main.parceiros') }}"
-    data-url-sobre-nos="{{ url_for('main.sobre_nos') }}"
-    data-url-login="{{ url_for('main.login_cadastro') }}"
-    data-url-register="{{ url_for('main.login_cadastro') }}#register"
-    data-logged-in="{{ logged_in }}"
-    data-url-logout="{{ url_for('main.logout') }}"
-    data-url-perfil="{{ url_for('main.perfil') }}"
->
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login e Cadastro - Engenharia Solidária</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/login_cadastro.css') }}">
+    </head>
+    <body
+        data-url-home="{{ url_for('main.homepage') }}"
+        data-url-projetos="{{ url_for('main.projetos') }}"
+        data-url-parceiros="{{ url_for('main.parceiros') }}"
+        data-url-sobre-nos="{{ url_for('main.sobre_nos') }}"
+        data-url-login="{{ url_for('main.login_cadastro') }}"
+        data-url-register="{{ url_for('main.login_cadastro') }}#register"
+        data-logged-in="{{ logged_in }}"
+        data-url-logout="{{ url_for('main.logout') }}"
+        data-url-perfil="{{ url_for('main.perfil') }}"
+    >
 
-    <div class="form-container">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert-{{ category }}">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-        <div class="form-switcher">
-            <button id="showLoginBtn" class="switcher-btn active">Login</button>
-            <button id="showRegisterBtn" class="switcher-btn">Cadastro</button>
+        <div class="form-container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="form-switcher">
+                <button id="showLoginBtn" class="switcher-btn active">Login</button>
+                <button id="showRegisterBtn" class="switcher-btn">Cadastro</button>
+            </div>
+
+            <form id="loginForm" method="POST" action="{{ url_for('main.login') }}">
+                <h2>Entrar na Plataforma</h2>
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" name="email" placeholder="seuemail@exemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Senha</label>
+                    <input type="password" id="loginPassword" name="senha" placeholder="Sua senha" required>
+                </div>
+                <div class="form-footer">
+                    <a href="#">Esqueceu a senha?</a>
+                </div>
+                <button type="submit" class="btn-submit" id="logginBtn">Entrar</button>
+            </form>
+
+            <form id="registerForm" method="POST"  class="hidden" action="{{ url_for('main.login_cadastro') }}">
+                <h2>Crie sua Conta</h2>
+                <div class="form-group">
+                    <label for="registerName">Nome Completo</label>
+                    <input type="text" id="registerName" name="nome" placeholder="Seu nome completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" name="email" placeholder="seuemail@exemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerCourse">Curso</label>
+                    <input type="text" id="registerCourse" name="course" placeholder="Ex: Engenharia Elétrica">
+                </div>
+                <div class="form-group">
+                    <label for="registerSemester">Semestre (Apenas número)</label>
+                    <input type="number" id="registerSemester" name="semester" placeholder="Ex: 2" min="1" max="12">
+                </div>
+                <div class="form-group">
+                    <label>Suas Habilidades (Selecione quantas quiser)</label>
+                    <div class="skills-container">
+                        {% for skill in skills %}
+                        <label style="display: block;">
+                            <input type="checkbox" name="skills" value="{{ skill.id }}"> {{ skill.name }}
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Senha</label>
+                    <input type="password" id="registerPassword" name="senha" placeholder="Crie uma senha forte" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar Senha</label>
+                    <input type="password" id="confirmPassword" placeholder="Repita a senha" required>
+                </div>
+                <button type="submit" class="btn-submit">Criar Conta</button>
+            </form>
         </div>
-
-        <form id="loginForm" method="POST" action="{{ url_for('main.login') }}">
-            <h2>Entrar na Plataforma</h2>
-            <div class="form-group">
-                <label for="loginEmail">Email</label>
-                <input type="email" id="loginEmail" name="email" placeholder="seuemail@exemplo.com" required>
-            </div>
-            <div class="form-group">
-                <label for="loginPassword">Senha</label>
-                <input type="password" id="loginPassword" name="senha" placeholder="Sua senha" required>
-            </div>
-            <div class="form-footer">
-                <a href="#">Esqueceu a senha?</a>
-            </div>
-            <button type="submit" class="btn-submit" id="logginBtn">Entrar</button>
-        </form>
-
-        <form id="registerForm" method="POST"  class="hidden" action="{{ url_for('main.login_cadastro') }}">
-            <h2>Crie sua Conta</h2>
-            <div class="form-group">
-                <label for="registerName">Nome Completo</label>
-                <input type="text" id="registerName" name="nome" placeholder="Seu nome completo" required>
-            </div>
-            <div class="form-group">
-                <label for="registerEmail">Email</label>
-                <input type="email" id="registerEmail" name="email" placeholder="seuemail@exemplo.com" required>
-            </div>
-            <div class="form-group">
-                <label for="registerPassword">Senha</label>
-                <input type="password" id="registerPassword" name="senha" placeholder="Crie uma senha forte" required>
-            </div>
-             <div class="form-group">
-                <label for="confirmPassword">Confirmar Senha</label>
-                <input type="password" id="confirmPassword" placeholder="Repita a senha" required>
-            </div>
-            <button type="submit" class="btn-submit">Criar Conta</button>
-        </form>
-    </div>
-    <script src="{{ url_for('static', filename='scripts/student_auth.js') }}"></script>
-</body>
-</html>
+        <script src="{{ url_for('static', filename='scripts/student_auth.js') }}"></script>
+    </body>
+    </html>

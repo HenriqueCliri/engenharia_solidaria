@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-R">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Perfil - Engenharia Solidária</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css') }}"> </head>
 <body
     data-url-home="{{ url_for('main.homepage') }}"
     data-url-projetos="{{ url_for('main.projetos') }}"
@@ -21,38 +24,44 @@
     data-logged-in="{{ logged_in }}"
     data-url-perfil="{{ url_for('main.perfil') }}"
 >
-
-    <header class="header">
-        <nav class="container navbar">
-            <a href="{{ url_for('main.homepage') }}" class="logo">Engenharia Solidária</a>
-            <div class="nav-links" id="nav-auth-links">
-                </div>
-            <a href="{{ url_for('main.login_cadastro') }}#register" class="btn btn-primary" id="btn-register">Cadastre-se</a>
-        </nav>
+   <header id="top-header">
+        <button id="sidebar-toggle" aria-label="Abrir menu lateral">
+            &#9776; 
+        </button>
+        <a href="{{ url_for('main.homepage') }}" class="header-logo">Engenharia Solidária</a>
     </header>
 
+    <aside id="sidebar">
+        <button id="sidebar-close" aria-label="Fechar menu lateral">&times;</button> 
+        <nav id="sidebar-nav-links" class="sidebar-nav">
+            </nav>
+
+        <a href="{{ url_for('main.login_cadastro') }}#register" class="btn btn-primary sidebar-register-btn" id="btn-register">Cadastro de Estudante</a>
+    </aside>
+
+    <div id="main-content">
     <main>
         <section class="section">
-            <div class="container" style="text-align: left;">
-                <h1 style="text-align: center; margin-bottom: 40px;">Bem-vindo(a) ao seu Perfil, {{ user.nome }}!</h1>
+            <div class="container">
+                <h1 class="profile-title">Bem-vindo(a) ao seu Perfil, {{ user.nome }}!</h1>
                 
-                <h2 class="section-title" style="font-size: 2rem; text-align: center;">Meus Projetos Inscritos</h2>
+                <h2 class="section-title">Meus Projetos Inscritos</h2>
 
                 {% if user.projects %}
                     <div class="projects-grid">
                         {% for project in user.projects %}
                         <div class="project-card">
-                            <img src="{{ url_for('static', filename='img/biblioteca.jpeg') }}" alt="Imagem do Projeto">
+                            <img src="{{ project.image_url or url_for('static', filename='img/biblioteca.jpeg') }}" alt="Imagem do Projeto {{ project.title }}">
                             <div class="project-card-content">
                                 <h3>{{ project.title }}</h3>
                                 <p class="project-card-location">{{ project.location }}</p>
-                                <a href="{{ url_for('main.detalhes_projeto', project_id=project.id) }}" class="btn btn-primary">Ver Detalhes</a>
+                                <a href="{{ url_for('main.detalhes_projeto', project_id=project.id) }}" class="btn">Ver Detalhes</a>
                             </div>
                         </div>
                         {% endfor %}
                     </div>
                 {% else %}
-                    <p style="text-align: center; margin-top: 30px;">
+                    <p class="no-projects-message">
                         Você ainda não se inscreveu em nenhum projeto. 
                         <a href="{{ url_for('main.projetos') }}">Que tal encontrar um agora?</a>
                     </p>
@@ -62,12 +71,13 @@
     </main>
 
     <footer class="footer">
-        <div class="container">
+        <div class="footer-container">
             <p>&copy; 2025 Engenharia Solidária. Um projeto da disciplina de Lógica de Programação.</p>
             <p class="signature">vai dar certo!</p>
         </div>
     </footer>
-
+    </div>
     <script src="{{ url_for('static', filename='scripts/nav.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/sidebar.js') }}"></script>
 </body>
 </html>

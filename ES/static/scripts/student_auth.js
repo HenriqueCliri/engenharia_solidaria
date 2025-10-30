@@ -1,43 +1,52 @@
-const showLoginBtn = document.getElementById('showLoginBtn');
-const showRegisterBtn = document.getElementById('showRegisterBtn');
-const loginForm = document.getElementById('loginForm');
-const registerForm = document.getElementById('registerForm');
-const loginBtn = document.getElementById('loginBtn');
 
+document.addEventListener('DOMContentLoaded', () => {
+    const showLoginBtn = document.getElementById('showLoginBtn');
+    const showRegisterBtn = document.getElementById('showRegisterBtn');
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
 
-function showLoginForm() {
-    loginForm.classList.remove('hidden');
-    registerForm.classList.add('hidden');
-    showLoginBtn.classList.add('active');
-    showRegisterBtn.classList.remove('active');
-}
-
-function showRegisterForm() {
-    registerForm.classList.remove('hidden');
-    loginForm.classList.add('hidden');
-    showRegisterBtn.classList.add('active');
-    showLoginBtn.classList.remove('active');
-}
-
-showLoginBtn.addEventListener('click', showLoginForm);
-showRegisterBtn.addEventListener('click', showRegisterForm);
-
-document.addEventListener('DOMContentLoaded', function() {
-    const hash = window.location.hash;
-
-    if (hash === '#register') {
-        showRegisterForm();
-    } else {
-        showLoginForm();
+    function showLogin() {
+        loginForm.classList.remove('hidden');
+        registerForm.classList.add('hidden');
+        showLoginBtn.classList.add('active');
+        showRegisterBtn.classList.remove('active');
     }
-});
 
-loginBtn.addEventListener('click', function(event) {
-    event.preventDefault(); 
-    
-    localStorage.setItem('isLoggedIn', 'true');
-    
-    alert('Login realizado com sucesso! (Simulação)');
-    
-    window.location.href = 'index.html';
+    function showRegister() {
+        loginForm.classList.add('hidden');
+        registerForm.classList.remove('hidden');
+        showLoginBtn.classList.remove('active');
+        showRegisterBtn.classList.add('active');
+    }
+
+    if (showLoginBtn) {
+        showLoginBtn.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            showLogin();
+        });
+    }
+
+    if (showRegisterBtn) {
+        showRegisterBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showRegister();
+        });
+    }
+
+    if (registerForm) {
+        registerForm.addEventListener('submit', (e) => {
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                e.preventDefault(); 
+                alert('As senhas não coincidem. Por favor, verifique.');
+            }
+        });
+    }
+    if (window.location.hash === '#register') {
+        showRegister();
+    } else {
+        showLogin();
+    }
 });

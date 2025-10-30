@@ -1,7 +1,5 @@
-// Arquivo: nav.js (VERSÃO FINAL E CORRIGIDA)
-
 document.addEventListener('DOMContentLoaded', function() {
-    const navAuthLinks = document.getElementById('nav-auth-links');
+    const navAuthLinks = document.getElementById('sidebar-nav-links');
     const registerBtn = document.getElementById('btn-register');
     const bodyData = document.body.dataset;
 

@@ -12,6 +12,11 @@ project_skills = db.Table('project_skills',
     db.Column('project_id', db.Integer, db.ForeignKey('project.id'), primary_key=True)
 )
 
+user_skills = db.Table('user_skills',
+    db.Column('skill_id', db.Integer, db.ForeignKey('skill.id'), primary_key=True),
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True)
+)
+
 class Skill(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
@@ -28,6 +33,9 @@ class Project(db.Model):
     status = db.Column(db.String(50), nullable=False, default='Não Inicializada')
     work_date = db.Column(db.Date, nullable=True)
     
+    responsible_org = db.Column(db.String(150), nullable=True)
+    responsible_contact = db.Column(db.String(100), nullable=True)
+    
     voluntarios = db.relationship('User', secondary=inscricoes, back_populates='projects')
     required_skills = db.relationship('Skill', secondary=project_skills, lazy='subquery', backref=db.backref('projects', lazy=True))
 
@@ -41,6 +49,12 @@ class User(db.Model):
     senha = db.Column(db.String(256), nullable=False)
     projects = db.relationship('Project', secondary=inscricoes, back_populates='voluntarios')
     is_admin = db.Column(db.Boolean, default=False, nullable=False)
+    
+    course = db.Column(db.String(100), nullable=True)
+    semester = db.Column(db.Integer, nullable=True)
+    
+    projects = db.relationship('Project', secondary=inscricoes, back_populates='voluntarios')
+    skills = db.relationship('Skill', secondary=user_skills, lazy='subquery', backref=db.backref('users', lazy=True))
 
     def __repr__(self):
         return f'<User {self.nome}>'

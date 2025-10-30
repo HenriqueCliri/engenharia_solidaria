@@ -1,0 +1,132 @@
+:root {
+  --cor-primaria: #253594;
+  --cor-secundaria: #d9534f;
+  --cor-sucesso: #4cae4c;
+  --cor-fundo: #ffffff;
+  --cor-fundo-secundario: #f4f4f4;
+  --cor-texto: #333333;
+  --cor-texto-claro: #ffffff;
+  --cor-borda: #e0e0e0;
+
+  --cor-botao: #f7b910;
+  --cor-botao: #ffa600;
+
+
+  --fonte-principal: "Roboto", sans-serif;
+  --fonte-secundaria: "Montserrat", sans-serif;
+
+  --texto-xs: 0.75rem;
+  --texto-sm: 0.875rem;
+  --texto-base: 1rem;
+  --texto-lg: 1.400rem;
+  --texto-xl: 1.5rem;
+  --texto-2xl: 2rem;
+
+  --esp-1: 0.25rem;
+  --esp-2: 0.5rem;
+  --esp-3: 1rem;
+  --esp-4: 1.5rem;
+  --esp-5: 2rem;
+  --esp-6: 3rem;
+  
+  --raio-borda: 5px;
+  --sombra-padrao: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --largura-maxima: 1200px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--fonte-principal);
+  font-size: var(--texto-base);
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+  line-height: 1.6;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--cor-primaria);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fonte-secundaria);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--esp-3);
+}
+
+h1 { font-size: var(--texto-2xl); }
+h2 { font-size: var(--texto-xl); }
+
+.btn {
+  display: inline-block;
+  padding: var(--esp-3) var(--esp-5);
+  font-family: var(--fonte-principal);
+  font-weight: 700;
+  border-radius: var(--raio-borda);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--cor-botao);
+  color: var(--cor-texto-claro);
+  border-color: var(--cor-botao-hover);
+}
+
+.btn-primary:hover {
+  background-color: hsl(36, 100%, 51%);
+  border-color: #f3a807;
+  color: var(--cor-texto-claro);
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--cor-texto);
+  border-color: var(--cor-borda);
+}
+
+.btn-secondary:hover {
+  background-color: var(--cor-fundo-secundario);
+  border-color: var(--cor-fundo-secundario);
+  color: var(--cor-texto);
+  text-decoration: none;
+}

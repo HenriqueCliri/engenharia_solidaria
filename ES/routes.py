@@ -32,7 +32,18 @@ def homepage():
 @main.route('/projetos')
 def projetos():
     todos_os_projetos = Project.query.all()
-    return render_template('projetos.html', logged_in=('user_id' in session), projects=todos_os_projetos)
+    
+    todas_as_skills = Skill.query.order_by(Skill.name).all()
+    locations_tuples = db.session.query(Project.location).distinct().order_by(Project.location).all()
+    todas_as_localizacoes = [loc[0] for loc in locations_tuples if loc[0]]
+    
+    return render_template(
+        'projetos.html', 
+        logged_in=('user_id' in session), 
+        projects=todos_os_projetos,
+        skills=todas_as_skills,
+        locations=todas_as_localizacoes
+    )
 
 @main.route('/parceiros')
 def parceiros():
@@ -51,6 +62,13 @@ def login_cadastro():
         nome = request.form.get('nome')
         email = request.form.get('email')
         senha = request.form.get('senha')
+        
+        course = request.form.get('course')
+        semester_str = request.form.get('semester')
+        skill_ids = request.form.getlist('skills')
+        
+        semester = int(semester_str) if semester_str else None
+        
         senha_hash = generate_password_hash(senha)
         user_exists = User.query.filter_by(email=email).first()
         
@@ -58,14 +76,27 @@ def login_cadastro():
             flash('Email já está cadastrado, tente outro.', 'danger')
             return redirect(url_for('main.login_cadastro'))
         
-        novo_usuario = User(nome=nome, email=email, senha=senha_hash)
+        novo_usuario = User(
+            nome=nome, 
+            email=email, 
+            senha=senha_hash,
+            course=course,
+            semester=semester
+        )
+        
+        for skill_id in skill_ids:
+            skill = Skill.query.get(skill_id)
+            if skill:
+                novo_usuario.skills.append(skill)
+                
         db.session.add(novo_usuario)
         db.session.commit()
+
         flash('Cadastro realizado! Faça o login.', 'success')
-        
         return redirect(url_for('main.login_cadastro'))
     
-    return render_template('login_cadastro.html', logged_in=('user_id' in session))
+    all_skills = Skill.query.all()  
+    return render_template('login_cadastro.html', logged_in=('user_id' in session), skills=all_skills)
 
 @main.route('/login', methods=['POST'])
 def login():
@@ -77,6 +108,9 @@ def login():
         session['user_id'] = user.id
         session['user_name'] = user.nome
         
+        print('teste para administrador')
+        print(f'administrador "{user.is_admin}"')
+        print(f'usuario do sistema "{user.nome}"')
         if user.is_admin:
             flash(f'Bem-vindo(a), Administrador {user.nome}!', 'success')
             return redirect(url_for('main.admin_page'))
@@ -179,12 +213,17 @@ def admin_page():
         
         work_date = datetime.strptime(work_date_str, '%Y-%m-%d').date() if work_date_str else None
 
+        responsible_org = request.form.get('responsible_org')
+        responsible_contact = request.form.get('responsible_contact')
+
         novo_projeto = Project(
             title=title, 
             location=location, 
             description=description, 
             status=status,
-            work_date=work_date
+            work_date=work_date,
+            responsible_org=responsible_org,
+            responsible_contact=responsible_contact
         )
 
         skill_ids = request.form.getlist('skills')
@@ -217,3 +256,33 @@ def delete_project(project_id):
 def view_volunteers(project_id):
     projeto = Project.query.get_or_404(project_id)
     return render_template('volunteers.html', project=projeto, logged_in=True)
+
+@main.route('/admin/add_skill', methods=['POST'])
+@admin_required
+def add_skill():
+    skill_name = request.form.get('skill_name')
+    
+    if not skill_name or skill_name.strip() == "":
+        flash('O nome da habilidade não pode estar vazio.', 'danger')
+        return redirect(url_for('main.admin_page'))
+    
+    existing_skill = Skill.query.filter(Skill.name.ilike(skill_name)).first()
+    if existing_skill:
+        flash(f'A habilidade "{skill_name}" já existe.', 'warning')
+        return redirect(url_for('main.admin_page'))
+    
+    new_skill = Skill(name=skill_name.strip())
+    db.session.add(new_skill)
+    db.session.commit()
+    flash(f'Habilidade "{skill_name}" adicionada com sucesso!', 'success')
+    return redirect(url_for('main.admin_page'))
+
+@main.route('/admin/delete_skill/<int:skill_id>', methods=['POST'])
+@admin_required
+def delete_skill(skill_id):
+    skill_to_delete = Skill.query.get_or_404(skill_id)
+    
+    db.session.delete(skill_to_delete)
+    db.session.commit()
+    flash(f'Habilidade "{skill_to_delete}" deletada.', 'success')
+    return redirect(url_for('main.admin_page'))

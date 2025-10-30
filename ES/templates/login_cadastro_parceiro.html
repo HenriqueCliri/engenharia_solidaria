@@ -10,10 +10,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/login_cadastro_parceiro.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login_cadastro_parceiro.css') }}">
+    
 </head>
 
-<body
+<body   
     data-url-home="{{ url_for('main.homepage') }}"
     data-url-projetos="{{ url_for('main.projetos') }}"
     data-url-parceiros="{{ url_for('main.parceiros') }}"

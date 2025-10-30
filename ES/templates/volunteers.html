@@ -4,34 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscritos - {{ project.title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    </head>
-<body data-logged-in="True">
-    <header class="header">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/volunteers.css') }}">
+
+</head>
+<body data-logged-in="True"> 
+    <header class="header"> 
         <nav class="container navbar">
             <a href="{{ url_for('main.admin_page') }}" class="logo">Painel do Administrador</a>
-            <div><a href="{{ url_for('main.logout') }}" class="btn btn-primary">Sair</a></div>
+            <div>
+                <a href="{{ url_for('main.logout') }}" class="btn btn-primary">Sair</a>
+            </div>
         </nav>
     </header>
-    <main class="container" style="padding-top: 40px; padding-bottom: 40px;">
+
+    <main class="container"> 
         <h1 class="section-title">Inscritos no Projeto: {{ project.title }}</h1>
 
         {% if project.voluntarios %}
-            <ul style="list-style: none; padding: 0; max-width: 600px; margin: auto;">
+            <ul class="volunteer-list"> 
                 {% for voluntario in project.voluntarios %}
-                <li style="background: #f4f4f4; padding: 15px; border-radius: 5px; margin-bottom: 10px;">
-                    <strong>Nome:</strong> {{ voluntario.nome }} <br>
-                    <strong>Email:</strong> {{ voluntario.email }}
+                <li class="volunteer-card"> 
+                    <h3>{{ voluntario.nome }}</h3>
+                    <p><strong>Email:</strong> {{ voluntario.email }}</p>
+                    <p><strong>Curso:</strong> {{ voluntario.course or 'Não informado' }}</p>
+                    <p><strong>Semestre:</strong> {{ voluntario.semester or 'Não informado' }}</p>
+                    <div class="volunteer-skills"> 
+                        <strong>Habilidades:</strong> 
+                        {% if voluntario.skills %}
+                            {% for skill in voluntario.skills %}
+                                <span class="tag skill-tag">{{ skill.name }}</span> 
+                            {% endfor %}
+                        {% else %}
+                            <span class="no-skills">Nenhuma informada</span> 
+                        {% endif %}
+                    </div>
                 </li>
                 {% endfor %}
             </ul>
         {% else %}
-            <p style="text-align: center;">Ainda não há voluntários inscritos neste projeto.</p>
+            <p class="no-volunteers-message">Ainda não há voluntários inscritos neste projeto.</p>
         {% endif %}
 
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="{{ url_for('main.admin_page') }}" class="btn" style="background: #ccc;">Voltar ao Painel</a>
+        <div class="back-link-container"> 
+            <a href="{{ url_for('main.admin_page') }}" class="btn btn-secondary">Voltar ao Painel</a>
         </div>
     </main>
+
 </body>
 </html>

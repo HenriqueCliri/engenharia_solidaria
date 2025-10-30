@@ -1,0 +1,28 @@
+#top-header {
+  width: 100%;
+  padding: var(--esp-4) var(--esp-5);
+  background-color: var(--cor-fundo);
+  border-bottom: 1px solid var(--cor-borda);
+  display: flex;
+  align-items: center;
+  gap: var(--esp-4);
+}
+
+#sidebar-toggle {
+  background: none;
+  border: none;
+  font-size: var(--texto-xl);
+  color: var(--cor-texto);
+  cursor: pointer;
+}
+
+.header-logo {
+  font-size: var(--texto-lg);
+  font-weight: 700;
+  color: var(--cor-primaria);
+  text-decoration: none;
+}
+
+.header-logo:hover {
+  text-decoration: none;
+}

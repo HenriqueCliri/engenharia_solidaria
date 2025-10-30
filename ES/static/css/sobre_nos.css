@@ -1,192 +1,184 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+    --primary-color: #0056b3;
+    --primary-color-dark: #004085;
+    --text-color: #333;
+    --text-color-light: #666;
+    --light-gray: #f4f4f4;
+    --medium-gray: #ccc;
+    --border-color: #ddd;
+    --white: #ffffff;
 }
 
-body {
-  font-family: "Roboto", sans-serif;
-  color: #333;
-  line-height: 1.6;
+#main-content .section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
 }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-h1,
-h2,
-h3 {
-  font-family: "Montserrat", sans-serif;
-  color: #0a4f8a;
-}
-
-.section {
-  padding: 80px 0;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-/* --- HEADER E FOOTER --- */
-.header {
-  background-color: #ffffff;
-  padding: 15px 0;
-  border-bottom: 1px solid #e0e0e0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.5rem;
-  color: #0a4f8a;
-  text-decoration: none;
-}
-
-.nav-links a {
-  color: #333;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: 500;
-}
-
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-}
-
-.btn-primary {
-  background-color: #ff7a00;
-  color: #ffffff;
-}
-
-.btn-primary:hover {
-  background-color: #e66a00;
-}
-
-.footer {
-  background-color: #0a4f8a;
-  color: #ffffff;
-  text-align: center;
-  padding: 30px 0;
-}
-
-/* --- HERO SECTION --- */
 .hero-sobre {
-  background: linear-gradient(rgba(10, 79, 138, 0.7), rgba(10, 79, 138, 0.7)),
-    url("https://images.unsplash.com/photo-1521737852577-684822b8fa08?q=80&w=2070&auto=format&fit=crop")
-      no-repeat center center/cover;
-  color: #ffffff;
-  text-align: center;
-  padding: 100px 0;
+    background-color: var(--primary-color-dark);
+    color: var(--white);
+    padding: 4rem 1rem;
+    text-align: center;
 }
 
 .hero-sobre h1 {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-  color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
 }
 
-/* --- SEÇÃO NOSSA HISTÓRIA (DUAS COLUNAS) --- */
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
 .story-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: center;
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    gap: 3rem;
+    padding: 3rem;
 }
 
-.story-section img {
-  width: 100%;
-  border-radius: 8px;
+.story-image {
+    flex: 1 1 400px;
+}
+
+.story-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.story-content {
+    flex: 1 1 500px;
 }
 
 .story-content h2 {
-  font-size: 2.2rem;
-  margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
 }
 
 .story-content p {
-  margin-bottom: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-color-light);
+    margin-bottom: 1rem;
 }
 
 .story-context {
-  font-style: italic;
-  color: #555;
-  background-color: #f4f4f4;
-  padding: 15px;
-  border-left: 4px solid #0a4f8a;
-  border-radius: 0 4px 4px 0;
+    background-color: var(--light-gray);
+    border-left: 5px solid var(--primary-color);
+    padding: 1rem 1.5rem;
+    margin-top: 1.5rem;
+    border-radius: 0 5px 5px 0;
 }
 
-/* --- SEÇÃO CONHEÇA A EQUIPE --- */
+.story-context p {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
 .team-section {
-  background-color: #f4f4f4;
+    background-color: var(--light-gray);
 }
 
 .team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+    padding: 15px;
 }
 
 .team-member-card {
-  background-color: #ffffff;
-  text-align: center;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    background-color: var(--white);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
 }
 
-.team-member-card .photo-placeholder {
-  width: 150px;
-  height: 150px;
-  background-color: #e0e0e0;
-  border-radius: 50%;
-  margin: 0 auto 20px auto;
-  /* Em um projeto real, aqui iria uma imagem de fundo */
+.photo-placeholder {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--medium-gray);
+    margin: 0 auto 1.5rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--white);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E");
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .team-member-card h3 {
-  margin-bottom: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
 }
 
 .team-member-card .role {
-  color: #ff7a00;
-  font-weight: 500;
-  margin-bottom: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
 }
 
-/* --- SEÇÃO CTA --- */
+.team-member-card p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-color-light);
+}
+
 .cta-section {
-  text-align: center;
+    text-align: center;
+}
+
+.cta-section .section-title {
+    color: var(--primary-color-dark);
 }
 
 .cta-section p {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: -20px auto 30px auto;
+    font-size: 1.1rem;
+    color: var(--text-color-light);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* --- RESPONSIVIDADE --- */
-@media (max-width: 768px) {
-  .story-section {
-    grid-template-columns: 1fr;
-  }
+.cta-section .btn-cta {
+    font-size: 1.1rem;
+    padding: 15px 30px;
+    margin: 0.5rem;
+}
+
+.cta-section .btn-cta.btn-dark {
+    background-color: #333;
+    border-color: #333;
+}
+
+.cta-section .btn-cta.btn-dark:hover {
+    background-color: #555;
+    border-color: #555;
 }

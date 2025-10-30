@@ -1,37 +1,41 @@
-
-document.addEventListener('DOMContentLoaded', function () {
-    const searchInput = document.getElementById('search');
-    const skillSelect = document.getElementById('habilidade');
+document.addEventListener('DOMContentLoaded', () => {
+    const filtersForm = document.getElementById('filters-form');
     const projectCards = document.querySelectorAll('.project-card');
 
-    function filterProjects() {
-        const searchTerm = searchInput.value.toLowerCase().trim();
-        const selectedSkill = skillSelect.value;
+    if (filtersForm) {
+        filtersForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            applyFilters();
+        });
+    }
+
+    function applyFilters() {
+        const searchTerm = document.getElementById('search').value.toLowerCase();
+        const selectedSkill = document.getElementById('habilidade').value;
+        const selectedLocation = document.getElementById('localizacao').value;
 
         projectCards.forEach(card => {
-            const title = card.querySelector('h3').textContent.toLowerCase();
-            const tags = card.querySelectorAll('.project-card-tags .tag');
+            const projectTitle = card.querySelector('h3').textContent.toLowerCase();
+            const projectLocation = card.querySelector('.project-card-location').textContent;
+            
+            const skillTags = card.querySelectorAll('.project-card-tags .tag');
+            let cardHasSkill = false;
+            
+            skillTags.forEach(tag => {
+                if (tag.dataset.skill === selectedSkill) {
+                    cardHasSkill = true;
+                }
+            });
 
-            const searchMatch = title.includes(searchTerm);
+            const matchesSearch = projectTitle.includes(searchTerm);
+            const matchesLocation = (selectedLocation === 'all') || (projectLocation === selectedLocation);
+            const matchesSkill = (selectedSkill === 'all') || cardHasSkill;
 
-            let skillMatch = false;
-            if (selectedSkill === "") {
-                skillMatch = true;
-            } else {
-                tags.forEach(tag => {
-                    if (tag.dataset.skill === selectedSkill) {
-                        skillMatch = true;
-                    }
-                });
-            }
-            if (searchMatch && skillMatch) {
-                card.style.display = 'block';
+            if (matchesSearch && matchesLocation && matchesSkill) {
+                card.style.display = 'flex'; 
             } else {
                 card.style.display = 'none';
             }
         });
     }
-
-    searchInput.addEventListener('keyup', filterProjects);
-    skillSelect.addEventListener('change', filterProjects);
 });
