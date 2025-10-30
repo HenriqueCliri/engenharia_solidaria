@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Parceiros - Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_parceiros.css') }}">
+</head>
+<body data-logged-in="True"> 
+    
+    <header class="header"> 
+        <nav class="container navbar">
+            <a href="{{ url_for('main.admin_page') }}" class="logo">Painel do Administrador</a>
+            <div>
+                <a href="{{ url_for('main.logout') }}" class="btn btn-primary">Sair</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container"> 
+        <h1 class="section-title">Gestão de Organizações Parceiras</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div classclass="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% if parceiros %}
+            <ul class="partner-list"> 
+                {% for parceiro in parceiros %}
+                <li class="partner-card"> 
+                    <h3>{{ parceiro.nome_organizacao }}</h3>
+                    <p><strong>Responsável:</strong> {{ parceiro.responsavel or 'Não informado' }}</p>
+                    <p><strong>Email:</strong> {{ parceiro.email or 'Não informado' }}</p>
+                    <p><strong>Telefone:</strong> {{ parceiro.telefone or 'Não informado' }}</p>
+                    
+                    <div class="partner-card-footer">
+                        <form action="{{ url_for('main.excluir_parceiro', partner_id=parceiro.id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esta organização? Esta ação não pode ser desfeita.');">
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-partners-message">Não há nenhuma organização parceira cadastrada.</p>
+        {% endif %}
+
+        <div class="back-link-container"> 
+            <a href="{{ url_for('main.admin_page') }}" class="btn btn-secondary">Voltar ao Painel</a>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -286,3 +286,26 @@ def delete_skill(skill_id):
     db.session.commit()
     flash(f'Habilidade "{skill_to_delete}" deletada.', 'success')
     return redirect(url_for('main.admin_page'))
+
+@main.route('/admin/parceiros')
+@admin_required
+def admin_parceiros():
+    parceiros = Partner.query.all()
+    return render_template('admin_parceiros.html',
+                           title='Gestão de Parceiros',
+                           parceiros=parceiros)
+
+@main.route('/admin/excluir-parceiro/<int:partner_id>', methods=['POST'])
+@admin_required
+def excluir_parceiro(partner_id):
+    parceiro_para_excluir = Partner.query.get_or_404(partner_id)
+    
+    try:
+        db.session.delete(parceiro_para_excluir)
+        db.session.commit()
+        flash('Parceiro excluído com sucesso.', 'success')
+    except Exception as e:
+        db.session.rollback()
+        flash(f'Erro ao excluir parceiro: {e}', 'error')
+    
+    return redirect(url_for('main.admin_parceiros'))
