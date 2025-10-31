@@ -1,21 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projetos - Engenharia Solidária</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/projetos.css') }}">
-</head>
-<body
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/base.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/header.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/sidebar.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/footer.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/projetos.css') }}"
+    />
+  </head>
+  <body
     data-url-home="{{ url_for('main.homepage') }}"
     data-url-projetos="{{ url_for('main.projetos') }}"
     data-url-parceiros="{{ url_for('main.parceiros') }}"
@@ -25,98 +43,168 @@
     data-logged-in="{{ logged_in }}"
     data-url-logout="{{ url_for('main.logout') }}"
     data-url-perfil="{{ url_for('main.perfil') }}"
-    >
-   
+  >
     <header id="top-header">
-        <button id="sidebar-toggle" aria-label="Abrir menu lateral">
-            &#9776; 
-        </button>
-        <a href="{{ url_for('main.homepage') }}" class="header-logo">Engenharia Solidária</a>
+      <button id="sidebar-toggle" aria-label="Abrir menu lateral">
+        &#9776;
+      </button>
+      <a href="{{ url_for('main.homepage') }}" class="header-logo"
+        >Engenharia Solidária</a
+      >
     </header>
-    
-    <aside id="sidebar">
-        <button id="sidebar-close" aria-label="Fechar menu lateral">&times;</button> 
-        <nav id="sidebar-nav-links" class="sidebar-nav">
-            </nav>
 
-        <a href="{{ url_for('main.login_cadastro') }}#register" class="btn btn-primary sidebar-register-btn" id="btn-register">Cadastro de Estudante</a>
+    <aside id="sidebar">
+      <button id="sidebar-close" aria-label="Fechar menu lateral">
+        &times;
+      </button>
+      <nav id="sidebar-nav-links" class="sidebar-nav"></nav>
+
+      <a
+        href="{{ url_for('main.login_cadastro') }}#register"
+        class="btn btn-primary sidebar-register-btn"
+        id="btn-register"
+        >Cadastro de Estudante</a
+      >
     </aside>
 
-    <div id="main-content"> 
-        <main>
-            <section class="page-header">
-                <div class="container">
-                    <h1>Explore os Projetos</h1>
+    <div id="main-content">
+      <main>
+        <section class="page-header">
+          <div class="container">
+            <h1>Explore os Projetos</h1>
+          </div>
+        </section>
+
+        <div class="container">
+          <form class="filters-bar" id="filters-form">
+            <div class="filter-group filter-search">
+              <label for="search">Pesquisar por nome</label>
+              <input
+                type="text"
+                id="search"
+                name="search"
+                placeholder="Ex: Reforma de creche"
+              />
+            </div>
+
+            <div class="filter-group">
+              <label for="habilidade">Habilidade</label>
+              <select id="habilidade" name="habilidade">
+                <option value="all">Todas as habilidades</option>
+                {% for skill in skills %}
+                <option value="{{ skill.name|lower }}">{{ skill.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="localizacao">Localização</label>
+              <select id="localizacao" name="localizacao">
+                <option value="all">Todas as localizações</option>
+                {% for loc in locations %}
+                <option value="{{ loc }}">{{ loc }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="filter-btn">
+              Filtrar
+            </button>
+          </form>
+        </div>
+
+        <section class="projects-list">
+          <div class="container">
+            <div class="projects-grid">
+              {% for project in projects %}
+              <div class="project-card">
+                <img
+                  src="../static/img/horta_em_escola.jpg"
+                  alt="Imagem do Projeto"
+                />
+                <div class="project-card-content">
+                  <h3>{{ project.title }}</h3>
+                  <p class="project-card-location">{{ project.location }}</p>
+                  <div class="project-card-tags">
+                    {% for skill in project.required_skills %}
+                    <span class="tag" data-skill="{{ skill.name|lower }}"
+                      >{{ skill.name }}</span
+                    >
+                    {% else %}
+                    <span
+                      class="tag"
+                      style="background-color: #eee; color: #777"
+                      >Nenhuma habilidade específica</span
+                    >
+                    {% endfor %}
+                  </div>
+                  <a
+                    href="{{ url_for('main.detalhes_projeto', project_id=project.id) }}"
+                    class="btn btn-primary"
+                    >Saiba Mais</a
+                  >
                 </div>
-            </section>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </section>
+      </main>
 
-            <div class="container">
-                <form class="filters-bar" id="filters-form">
-                    <div class="filter-group filter-search">
-                        <label for="search">Pesquisar por nome</label>
-                        <input type="text" id="search" name="search" placeholder="Ex: Reforma de creche">
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label for="habilidade">Habilidade</label>
-                        <select id="habilidade" name="habilidade">
-                            <option value="all">Todas as habilidades</option>
-                            {% for skill in skills %}
-                                <option value="{{ skill.name|lower }}">{{ skill.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label for="localizacao">Localização</label>
-                        <select id="localizacao" name="localizacao">
-                            <option value="all">Todas as localizações</option>
-                            {% for loc in locations %}
-                            <option value="{{ loc }}">{{ loc }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary" id="filter-btn">Filtrar</button>
-                </form>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-column footer-about">
+              <h4>Engenharia Solidária</h4>
+              <p>
+                Unindo estudantes de engenharia a projetos sociais para
+                transformar comunidades. Um projeto da disciplina de Lógica de
+                Programação.
+              </p>
             </div>
 
-            <section class="projects-list">
-                <div class="container">
-                        <div class="projects-grid">
-                            {% for project in projects %}
-                            <div class="project-card">
-                                <img src="../static/img/horta_em_escola.jpg" alt="Imagem do Projeto">
-                                <div class="project-card-content">
-                                    <h3>{{ project.title }}</h3>
-                                    <p class="project-card-location">{{ project.location }}</p>
-                                        <div class="project-card-tags">
-                                            {% for skill in project.required_skills %}
-                                                <span class="tag" data-skill="{{ skill.name|lower }}">{{ skill.name }}</span> 
-                                            {% else %}
-                                                <span class="tag" style="background-color: #eee; color: #777;">Nenhuma habilidade específica</span>
-                                            {% endfor %}
-                                        </div>
-                                    <a href="{{ url_for('main.detalhes_projeto', project_id=project.id) }}" class="btn btn-primary">Saiba Mais</a>
-                                </div>
-
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-            </section>
-        </main>
-
-        <footer class="footer">
-
-            <div class="footer-container">
-                <p>&copy; 2025 Engenharia Solidária. Um projeto da disciplina de Lógica de Programação.</p>
+            <div class="footer-column footer-contact">
+              <h4>Contato</h4>
+              <p>
+                Email:
+                <a href="mailto:contato@engenhariasolidaria.com"
+                  >contato@engenhariasolidaria.com</a
+                >
+              </p>
+              <p>Telefone: (85) 99999-9999</p>
+              <p>Fortaleza, Ceará - Brasil</p>
             </div>
-        </footer>
+
+            <div class="footer-column footer-links">
+              <h4>Links</h4>
+              <ul>
+                <li><a href="{{ url_for('main.homepage') }}">Início</a></li>
+                <li><a href="{{ url_for('main.projetos') }}">Projetos</a></li>
+                <li><a href="{{ url_for('main.parceiros') }}">Parceiros</a></li>
+                <li><a href="{{ url_for('main.sobre_nos') }}">Sobre Nós</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column footer-social">
+              <h4>Siga-nos</h4>
+              <div class="social-links">
+                <a href="#" aria-label="Instagram">Insta</a>
+                <a href="#" aria-label="LinkedIn">Linkd</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <p>
+              &copy; 2025 Engenharia Solidária. Todos os direitos reservados.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
 
     <script src="{{ url_for('static', filename='scripts/filtro.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/nav.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/sidebar.js') }}"></script>
-</body>
+  </body>
 </html>

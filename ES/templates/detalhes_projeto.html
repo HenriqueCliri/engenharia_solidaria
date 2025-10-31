@@ -100,10 +100,46 @@
         </main>
 
         <footer class="footer">
-            <div class="footer-container">
-                <p>&copy; 2025 Engenharia Solidária. Um projeto da disciplina de Lógica de Programação.</p>
+    <div class="container">
+        <div class="footer-content">
+            
+            <div class="footer-column footer-about">
+                <h4>Engenharia Solidária</h4>
+                <p>Unindo estudantes de engenharia a projetos sociais para transformar comunidades. Um projeto da disciplina de Lógica de Programação.</p>
+                </div>
+
+            <div class="footer-column footer-contact">
+                <h4>Contato</h4>
+                <p>Email: <a href="mailto:contato@engenhariasolidaria.com">contato@engenhariasolidaria.com</a></p>
+                <p>Telefone: (85) 99999-9999</p>
+                <p>Fortaleza, Ceará - Brasil</p>
             </div>
-        </footer>
+
+            <div class="footer-column footer-links">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="{{ url_for('main.homepage') }}">Início</a></li>
+                    <li><a href="{{ url_for('main.projetos') }}">Projetos</a></li>
+                    <li><a href="{{ url_for('main.parceiros') }}">Parceiros</a></li>
+                    <li><a href="{{ url_for('main.sobre_nos') }}">Sobre Nós</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-social">
+                <h4>Siga-nos</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">Insta</a>
+                    <a href="#" aria-label="LinkedIn">Linkd</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Engenharia Solidária. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</footer>
     </div>
     <script src="{{ url_for('static', filename='scripts/projeto_detalhes.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/nav.js') }}"></script>

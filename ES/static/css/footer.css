@@ -1,4 +1,4 @@
-.footer {
+/* .footer {
   width: 100%;
   padding: var(--esp-6) 0;
   background-color: var(--cor-texto);
@@ -38,4 +38,134 @@
 .copyright {
   font-size: var(--texto-xs);
   color: var(--cor-fundo-secundario);
+} */
+
+:root {
+    --primary-color: #0056b3;
+    --primary-color-dark: #004085;
+    --text-color: #333;
+    --white: #ffffff;
+    
+    --footer-bg: #222;
+    --footer-text: #bdc3c7;
+    --footer-links: #ffffff;
+    --footer-border: #444;
+}
+
+.footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    padding-top: 3.5rem;
+    padding-bottom: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin-top: auto; 
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    padding:0 2.5rem;
+}
+
+.footer-column {
+    flex: 1 1 220px;
+    min-width: 220px;
+}
+
+.footer-column h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* Linha sutil abaixo dos títulos */
+.footer-column h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.footer-column p {
+    margin-bottom: 0.5rem;
+}
+
+.footer-contact a {
+    color: var(--footer-links);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: var(--footer-links);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--footer-border);
+    color: var(--footer-links);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--footer-border);
+    font-size: 0.9rem;
+    color: var(--footer-text);
+}
+
+.footer-bottom p {
+    margin: 0;
 }

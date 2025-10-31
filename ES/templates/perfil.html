@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-R">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-R" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meu Perfil - Engenharia Solidária</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css') }}"> </head>
-<body
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/base.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/header.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/sidebar.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/footer.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/perfil.css') }}"
+    />
+  </head>
+  <body
     data-url-home="{{ url_for('main.homepage') }}"
     data-url-projetos="{{ url_for('main.projetos') }}"
     data-url-parceiros="{{ url_for('main.parceiros') }}"
@@ -23,61 +42,124 @@
     data-url-logout="{{ url_for('main.logout') }}"
     data-logged-in="{{ logged_in }}"
     data-url-perfil="{{ url_for('main.perfil') }}"
->
-   <header id="top-header">
-        <button id="sidebar-toggle" aria-label="Abrir menu lateral">
-            &#9776; 
-        </button>
-        <a href="{{ url_for('main.homepage') }}" class="header-logo">Engenharia Solidária</a>
+  >
+    <header id="top-header">
+      <button id="sidebar-toggle" aria-label="Abrir menu lateral">
+        &#9776;
+      </button>
+      <a href="{{ url_for('main.homepage') }}" class="header-logo"
+        >Engenharia Solidária</a
+      >
     </header>
 
     <aside id="sidebar">
-        <button id="sidebar-close" aria-label="Fechar menu lateral">&times;</button> 
-        <nav id="sidebar-nav-links" class="sidebar-nav">
-            </nav>
+      <button id="sidebar-close" aria-label="Fechar menu lateral">
+        &times;
+      </button>
+      <nav id="sidebar-nav-links" class="sidebar-nav"></nav>
 
-        <a href="{{ url_for('main.login_cadastro') }}#register" class="btn btn-primary sidebar-register-btn" id="btn-register">Cadastro de Estudante</a>
+      <a
+        href="{{ url_for('main.login_cadastro') }}#register"
+        class="btn btn-primary sidebar-register-btn"
+        id="btn-register"
+        >Cadastro de Estudante</a
+      >
     </aside>
 
     <div id="main-content">
-    <main>
+      <main>
         <section class="section">
-            <div class="container">
-                <h1 class="profile-title">Bem-vindo(a) ao seu Perfil, {{ user.nome }}!</h1>
-                
-                <h2 class="section-title">Meus Projetos Inscritos</h2>
+          <div class="container">
+            <h1 class="profile-title">
+              Bem-vindo(a) ao seu Perfil, {{ user.nome }}!
+            </h1>
 
-                {% if user.projects %}
-                    <div class="projects-grid">
-                        {% for project in user.projects %}
-                        <div class="project-card">
-                            <img src="{{ project.image_url or url_for('static', filename='img/biblioteca.jpeg') }}" alt="Imagem do Projeto {{ project.title }}">
-                            <div class="project-card-content">
-                                <h3>{{ project.title }}</h3>
-                                <p class="project-card-location">{{ project.location }}</p>
-                                <a href="{{ url_for('main.detalhes_projeto', project_id=project.id) }}" class="btn">Ver Detalhes</a>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    <p class="no-projects-message">
-                        Você ainda não se inscreveu em nenhum projeto. 
-                        <a href="{{ url_for('main.projetos') }}">Que tal encontrar um agora?</a>
-                    </p>
-                {% endif %}
+            <h2 class="section-title">Meus Projetos Inscritos</h2>
+
+            {% if user.projects %}
+            <div class="projects-grid">
+              {% for project in user.projects %}
+              <div class="project-card">
+                <img
+                  src="{{ project.image_url or url_for('static', filename='img/biblioteca.jpeg') }}"
+                  alt="Imagem do Projeto {{ project.title }}"
+                />
+                <div class="project-card-content">
+                  <h3>{{ project.title }}</h3>
+                  <p class="project-card-location">{{ project.location }}</p>
+                  <a
+                    href="{{ url_for('main.detalhes_projeto', project_id=project.id) }}"
+                    class="btn"
+                    >Ver Detalhes</a
+                  >
+                </div>
+              </div>
+              {% endfor %}
             </div>
+            {% else %}
+            <p class="no-projects-message">
+              Você ainda não se inscreveu em nenhum projeto.
+              <a href="{{ url_for('main.projetos') }}"
+                >Que tal encontrar um agora?</a
+              >
+            </p>
+            {% endif %}
+          </div>
         </section>
-    </main>
+      </main>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <p>&copy; 2025 Engenharia Solidária. Um projeto da disciplina de Lógica de Programação.</p>
-            <p class="signature">vai dar certo!</p>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-column footer-about">
+              <h4>Engenharia Solidária</h4>
+              <p>
+                Unindo estudantes de engenharia a projetos sociais para
+                transformar comunidades. Um projeto da disciplina de Lógica de
+                Programação.
+              </p>
+            </div>
+
+            <div class="footer-column footer-contact">
+              <h4>Contato</h4>
+              <p>
+                Email:
+                <a href="mailto:contato@engenhariasolidaria.com"
+                  >contato@engenhariasolidaria.com</a
+                >
+              </p>
+              <p>Telefone: (85) 99999-9999</p>
+              <p>Fortaleza, Ceará - Brasil</p>
+            </div>
+
+            <div class="footer-column footer-links">
+              <h4>Links</h4>
+              <ul>
+                <li><a href="{{ url_for('main.homepage') }}">Início</a></li>
+                <li><a href="{{ url_for('main.projetos') }}">Projetos</a></li>
+                <li><a href="{{ url_for('main.parceiros') }}">Parceiros</a></li>
+                <li><a href="{{ url_for('main.sobre_nos') }}">Sobre Nós</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column footer-social">
+              <h4>Siga-nos</h4>
+              <div class="social-links">
+                <a href="#" aria-label="Instagram">Insta</a>
+                <a href="#" aria-label="LinkedIn">Linkd</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <p>
+              &copy; 2025 Engenharia Solidária. Todos os direitos reservados.
+            </p>
+          </div>
         </div>
-    </footer>
+      </footer>
     </div>
     <script src="{{ url_for('static', filename='scripts/nav.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/sidebar.js') }}"></script>
-</body>
+  </body>
 </html>

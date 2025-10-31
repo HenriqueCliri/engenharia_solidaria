@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Engenharia Solidária</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 
-</head>
-<body
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/base.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/header.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/sidebar.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/footer.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
+  </head>
+  <body
     data-url-home="{{ url_for('main.homepage') }}"
     data-url-projetos="{{ url_for('main.projetos') }}"
     data-url-parceiros="{{ url_for('main.parceiros') }}"
@@ -26,85 +43,160 @@
     data-logged-in="{{ logged_in }}"
     data-url-logout="{{ url_for('main.logout') }}"
     data-url-perfil="{{ url_for('main.perfil') }}"
->
+  >
     <header id="top-header">
-        <button id="sidebar-toggle" aria-label="Abrir menu lateral">
-            &#9776; 
-        </button>
-        <a href="{{ url_for('main.homepage') }}" class="header-logo">Engenharia Solidária</a>
+      <button id="sidebar-toggle" aria-label="Abrir menu lateral">
+        &#9776;
+      </button>
+      <a href="{{ url_for('main.homepage') }}" class="header-logo"
+        >Engenharia Solidária</a
+      >
     </header>
 
     <aside id="sidebar">
-        <button id="sidebar-close" aria-label="Fechar menu lateral">&times;</button> 
-        <nav id="sidebar-nav-links" class="sidebar-nav">
-            </nav>
+      <button id="sidebar-close" aria-label="Fechar menu lateral">
+        &times;
+      </button>
+      <nav id="sidebar-nav-links" class="sidebar-nav"></nav>
 
-        <a href="{{ url_for('main.login_cadastro') }}#register" class="btn btn-primary sidebar-register-btn" id="btn-register">Cadastro de Estudante</a>
+      <a
+        href="{{ url_for('main.login_cadastro') }}#register"
+        class="btn btn-primary sidebar-register-btn"
+        id="btn-register"
+        >Cadastro de Estudante</a
+      >
     </aside>
 
-<div id="main-content">
-    <main>
+    <div id="main-content">
+      <main>
         <section class="hero">
-            <div class="container">
-                <h1>Construindo futuros, juntos.</h1>
-                <p>Conectamos estudantes de engenharia a projetos que transformam comunidades.</p>
-                <a href="{{ url_for('main.projetos') }}" class="btn btn-primary">Ver Projetos</a>
-                <a href="{{ url_for('main.parceiros') }}" class="btn btn-secondary">Sou uma ONG</a>
-            </div>
+          <div class="container">
+            <h1>Construindo futuros, juntos.</h1>
+            <p>
+              Conectamos estudantes de engenharia a projetos que transformam
+              comunidades.
+            </p>
+            <a href="{{ url_for('main.projetos') }}" class="btn btn-primary"
+              >Ver Projetos</a
+            >
+            <a href="{{ url_for('main.parceiros') }}" class="btn btn-secondary"
+              >Sou uma ONG</a
+            >
+          </div>
         </section>
 
         <section class="section">
-            <div class="container">
-                <h2 class="section-title">Como Funciona</h2>
-                <div class="how-it-works-grid">
-                    <div class="step">
-                        <h3>1. Cadastre-se</h3>
-                        <p>Crie seu perfil de voluntário e adicione suas habilidades técnicas e áreas de interesse.</p>
-                    </div>
-                    <div class="step">
-                        <h3>2. Encontre um Projeto</h3>
-                        <p>Navegue pelas oportunidades disponíveis e escolha uma causa que combine com você.</p>
-                    </div>
-                    <div class="step">
-                        <h3>3. Faça a Diferença</h3>
-                        <p>Coloque seu conhecimento em prática, colabore com a equipe e gere impacto social real.</p>
-                    </div>
-                </div>
+          <div class="container">
+            <h2 class="section-title">Como Funciona</h2>
+            <div class="how-it-works-grid">
+              <div class="step">
+                <h3>1. Cadastre-se</h3>
+                <p>
+                  Crie seu perfil de voluntário e adicione suas habilidades
+                  técnicas e áreas de interesse.
+                </p>
+              </div>
+              <div class="step">
+                <h3>2. Encontre um Projeto</h3>
+                <p>
+                  Navegue pelas oportunidades disponíveis e escolha uma causa
+                  que combine com você.
+                </p>
+              </div>
+              <div class="step">
+                <h3>3. Faça a Diferença</h3>
+                <p>
+                  Coloque seu conhecimento em prática, colabore com a equipe e
+                  gere impacto social real.
+                </p>
+              </div>
             </div>
+          </div>
         </section>
 
         <section class="section projects-section">
-            <div class="container">
-                <h2 class="section-title">Projetos em Destaque</h2>
-                <div class="projects-grid">
-                    {% for project in projects %}
-                    <div class="project-card">
-                        <img src="{{ url_for('static', filename='img/creche.jpg')}}" alt="Imagem do Projeto">
-                        <div class="project-card-content">
-                            <h3>{{ project.title }}</h3>
-                            <p class="project-card-location">{{ project.location }}</p>
-                            <div class="project-card-tags">
-                                <span class="tag">#Comunitário</span>
-                            </div>
-                            <a href="{{ url_for('main.detalhes_projeto', project_id=project.id)}}" class="btn btn-primary">Saiba Mais</a>
-                        </div>
-                    </div>
-                    {% endfor %}
+          <div class="container">
+            <h2 class="section-title">Projetos em Destaque</h2>
+            <div class="projects-grid">
+              {% for project in projects %}
+              <div class="project-card">
+                <img
+                  src="{{ url_for('static', filename='img/creche.jpg')}}"
+                  alt="Imagem do Projeto"
+                />
+                <div class="project-card-content">
+                  <h3>{{ project.title }}</h3>
+                  <p class="project-card-location">{{ project.location }}</p>
+                  <div class="project-card-tags">
+                    <span class="tag">#Comunitário</span>
+                  </div>
+                  <a
+                    href="{{ url_for('main.detalhes_projeto', project_id=project.id)}}"
+                    class="btn btn-primary"
+                    >Saiba Mais</a
+                  >
                 </div>
+              </div>
+              {% endfor %}
             </div>
+          </div>
         </section>
-    </main>
+      </main>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <p>&copy; 2025 Engenharia Solidária. Um projeto da disciplina de Lógica de Programação.</p>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-column footer-about">
+              <h4>Engenharia Solidária</h4>
+              <p>
+                Unindo estudantes de engenharia a projetos sociais para
+                transformar comunidades. Um projeto da disciplina de Lógica de
+                Programação.
+              </p>
+            </div>
+
+            <div class="footer-column footer-contact">
+              <h4>Contato</h4>
+              <p>
+                Email:
+                <a href="mailto:contato@engenhariasolidaria.com"
+                  >contato@engenhariasolidaria.com</a
+                >
+              </p>
+              <p>Telefone: (85) 99999-9999</p>
+              <p>Fortaleza, Ceará - Brasil</p>
+            </div>
+
+            <div class="footer-column footer-links">
+              <h4>Links</h4>
+              <ul>
+                <li><a href="{{ url_for('main.homepage') }}">Início</a></li>
+                <li><a href="{{ url_for('main.projetos') }}">Projetos</a></li>
+                <li><a href="{{ url_for('main.parceiros') }}">Parceiros</a></li>
+                <li><a href="{{ url_for('main.sobre_nos') }}">Sobre Nós</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column footer-social">
+              <h4>Siga-nos</h4>
+              <div class="social-links">
+                <a href="#" aria-label="Instagram">Insta</a>
+                <a href="#" aria-label="LinkedIn">Linkd</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <p>
+              &copy; 2025 Engenharia Solidária. Todos os direitos reservados.
+            </p>
+          </div>
         </div>
-    </footer>
-</div>
+      </footer>
+    </div>
 
     <script src="{{ url_for('static', filename='scripts/student_auth.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/nav.js')}}"></script>
     <script src="{{ url_for('static', filename='scripts/sidebar.js')}}"></script>
-
-</body>
+  </body>
 </html>
