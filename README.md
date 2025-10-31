@@ -1,6 +1,6 @@
 # Engenharia Solidária 🏗️
 
-![Status](https://img.shields.io/badge/status-em%20concluído-green)
+![Status](https://img.shields.io/badge/status-%20concluído-green)
 
 Plataforma web desenvolvida como projeto acadêmico para conectar estudantes de engenharia a projetos de construção e reforma em comunidades, permitindo a aplicação prática do conhecimento em ações de impacto social.
 
