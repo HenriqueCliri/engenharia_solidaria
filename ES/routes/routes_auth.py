@@ -105,6 +105,6 @@ def login_cadastro_parceiro():
         db.session.commit()
         
         flash('Organização cadastrada com sucesso!.', 'success')
-        return redirect(url_for('main.login_cadastro_parceiro'))
+        return redirect(url_for('main.homepage'))
     
     return render_template('login_cadastro_parceiro.html', logged_in=('user_id' in session))
