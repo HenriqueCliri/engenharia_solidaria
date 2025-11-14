@@ -92,8 +92,8 @@ O projeto utiliza um servidor web local embutido no Python para servir os arquiv
 
 ### 5. Autores
 
-- Davi Benício
-- Francisco Neto
-- Ricardo
-- Samya Souza
-- Henrique Ribeiro
+* Davi Benício
+* Francisco Neto
+* Ricardo
+* Samya Souza
+* Henrique Ribeiro
