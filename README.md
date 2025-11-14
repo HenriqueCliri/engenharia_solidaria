@@ -12,7 +12,7 @@ Plataforma web desenvolvida como projeto acadêmico para conectar estudantes de 
 - [2. Contexto Acadêmico](#2-contexto-acadêmico)
 - [3. Tecnologias Utilizadas](#3-tecnologias-utilizadas)
 - [4. Como Executar](#4-como-executar)
-- [5. Autores](#6-autores)
+- [5. Autores](#5-autores)
 
 ---
 
