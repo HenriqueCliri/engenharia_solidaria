@@ -112,9 +112,9 @@ def delete_skill(skill_id):
 @admin_required
 def admin_parceiros():
     parceiros = Partner.query.all()
-    return render_template('admin_parceiros.html',
-                           title='Gestão de Parceiros',
-                           parceiros=parceiros)
+    # telefone = Partner.
+    
+    return render_template('admin_parceiros.html', title='Gestão de Parceiros', parceiros=parceiros)
 
 @dp.route('/admin/excluir-parceiro/<int:partner_id>', methods=['POST'])
 @admin_required

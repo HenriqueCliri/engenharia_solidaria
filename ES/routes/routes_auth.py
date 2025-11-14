@@ -80,6 +80,7 @@ def logout():
 def login_cadastro_parceiro():
     if request.method == 'POST':
         org_name = request.form.get('org_name')
+        telefone = request.form.get('telefone')
         cnpj = request.form.get('cnpj')
         responsible_name = request.form.get('responsible_name')
         email = request.form.get('email')
@@ -98,6 +99,7 @@ def login_cadastro_parceiro():
             cnpj=cnpj,
             responsible_name=responsible_name,
             email=email,
+            telefone=telefone,
             senha=senha_hash
         )
         

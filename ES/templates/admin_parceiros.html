@@ -39,7 +39,7 @@
                 {% for parceiro in parceiros %}
                 <li class="partner-card"> 
                     <h3>{{ parceiro.nome_organizacao }}</h3>
-                    <p><strong>Responsável:</strong> {{ parceiro.responsavel or 'Não informado' }}</p>
+                    <p><strong>Responsável:</strong> {{ parceiro.responsible_name or 'Não informado' }}</p>
                     <p><strong>Email:</strong> {{ parceiro.email or 'Não informado' }}</p>
                     <p><strong>Telefone:</strong> {{ parceiro.telefone or 'Não informado' }}</p>
                     

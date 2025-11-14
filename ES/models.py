@@ -64,6 +64,7 @@ class Partner(db.Model):
     org_name = db.Column(db.String(150), nullable=False)
     cnpj = db.Column(db.String(20), unique=True, nullable=True)
     responsible_name = db.Column(db.String(100), nullable=False)
+    telefone = db.Column(db.String(80), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     senha = db.Column(db.String(256), nullable=False)
 
